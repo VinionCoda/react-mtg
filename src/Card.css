@@ -1,0 +1,55 @@
+.cardtitle {
+  text-align: center;
+  padding-top: 18px;
+}
+
+.card {
+  padding: 15px;
+  position: relative;
+}
+
+.banned {
+  border-radius: 25px;
+  border: solid 10px red;
+}
+
+.limited {
+  border-radius: 25px;
+  border: solid 10px yellow;
+}
+
+.blank {
+  border-radius: 25px;
+  border: solid 10px gray;
+}
+
+.card img {
+  width: 240px;
+  height: 336px;
+}
+
+.card-symbol {
+  display: inline-block;
+  margin: 1px 1px -1px 1px;
+  -webkit-border-radius: 500px;
+  border-radius: 500px;
+  -webkit-box-shadow: -1px 1px 0 rgba(0, 0, 0, 0.85);
+  box-shadow: -1px 1px 0 rgba(0, 0, 0, 0.85);
+  text-indent: -999em;
+  overflow: hidden;
+  width: 15px;
+  height: 15px;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  background-position: top left;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+  cursor: help;
+}
+
+.mana_container{
+  float:right;
+  text-align: left;
+
+}
+

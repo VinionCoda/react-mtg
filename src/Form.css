@@ -1,0 +1,16 @@
+.list {
+}
+
+.list__item {
+  display: flex;
+  height: 20px;
+  width: 300px;
+}
+
+.list__item__svg {
+  margin-right: 20px;
+}
+
+.list__item__text {
+  margin-left: 20px;
+}

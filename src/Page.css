@@ -1,0 +1,140 @@
+.header {
+  padding: 5px;
+  text-align: center;
+  font-size: 35px;
+  color: black;
+  background-image: url("../public/img/banner.jpg");
+  height: 200px;
+}
+
+.header__icon {
+  display: none;
+}
+
+.header__text {
+  margin: auto;
+}
+
+.modal {
+  display: none;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  display: flex;
+}
+
+.side {
+  min-width: 200px;
+  background-color: indigo;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  margin-left: 50px;
+}
+
+.footer {
+  background-color: gray;
+  color: white;
+  text-align: center;
+}
+
+@media only screen and (max-width: 500px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .header {
+    all: revert;
+    height: 120px;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    position: fixed;
+    z-index: 3;
+    background-color: black;
+  }
+
+  .header__text {
+    margin-bottom: 20px;
+    margin-top: 15px;
+  }
+  .header__icon {
+    display: block;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  .side {
+    display: none;
+  }
+
+  body {
+    min-width: 400px;
+    min-height: 400px;
+  }
+
+  .main {
+    all: revert;
+    display: block;
+    margin-top: 140px;
+    min-height: 600px;
+    width: inherit;
+  }
+
+  .footer {
+    margin-top: 50px;
+  }
+
+  .modal {
+    display: none; 
+    z-index: 4; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0, 0, 0); 
+    background-color: rgba(0, 0, 0, 0.4); 
+  }
+
+  .modal__content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 500px;
+  }
+
+  .modal__close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  .modal__close:hover {
+    color: red;
+    font-size: 40px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .setname{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+    font-size: large;
+    background-color: khaki !important;
+  }
+}

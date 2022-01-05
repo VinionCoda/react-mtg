@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+header{
+text-align: center;
+
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +41,26 @@
     transform: rotate(360deg);
   }
 }
+
+
+.menu-item {
+  display: flex;
+  height: 20px;
+  width: 150px;
+  font-size: large;
+  padding-left: 10px;
+}
+
+.menu-item img {
+  padding-left: 20px;
+}
+
+.setname {
+  font-size: xx-large;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
+  display: block;
+  padding-top: 20px;
+  text-shadow: 3px 3px 15px rgb(0, 0, 0);
+}
+
