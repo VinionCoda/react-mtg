@@ -1,9 +1,13 @@
 .flip-card {
-  width: 320px;
   height: 390px;
   margin-bottom: 20px;
-
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.flip-card-content {
+  display: block !important;
+  border: none !important;
+  background-color: transparent !important;
 }
 
 .flip-card-inner {
@@ -32,7 +36,7 @@
   position: relative;
   left: 205px;
   bottom: 160px;
-  width: 67px
+  width: 67px;
 }
 
 .flip-icon img {
@@ -44,7 +48,7 @@
   opacity: 0.5;
 }
 
-.flip-card-title{
+.flip-card-title {
   text-align: center;
 }
 

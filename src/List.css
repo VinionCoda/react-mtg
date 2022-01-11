@@ -1,0 +1,132 @@
+@media only screen and (max-width: 500px) {
+  .banned {
+    all: revert;
+    color: red;
+  }
+
+  .limited {
+    all: revert;
+    color: yellowgreen;
+  }
+
+  .set_icon {
+    display: inline-block;
+    width: 25px;
+    height: 15px;
+    background-size: cover;
+  }
+
+  .set_icon--uncommon {
+    filter: invert(94%) sepia(81%) saturate(5639%) hue-rotate(175deg)
+      brightness(85%) contrast(85%);
+  }
+
+  .set_icon--rare {
+    filter: invert(94%) sepia(12%) saturate(1533%) hue-rotate(343deg)
+      brightness(86%) contrast(90%);
+  }
+
+  .set_icon--mythic {
+    filter: invert(80%) sepia(43%) saturate(5384%) hue-rotate(339deg)
+      brightness(89%) contrast(90%);
+  }
+
+  .setlist {
+    margin-bottom: 25px;
+
+  }
+}
+
+.color-indicator {
+  display: block;
+  float: left;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: 13px;
+  height: 13px;
+  margin: 2px 7px 0 0;
+  border: 1px solid #333;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  color: transparent;
+  cursor: help;
+  background: #551a8b;
+}
+.color-indicator-W {
+  background: #fafde8;
+}
+.color-indicator-U {
+  background: #3277a7;
+}
+.color-indicator-B {
+  background: #393736;
+}
+.color-indicator-R {
+  background: #da3946;
+}
+.color-indicator-G {
+  background: #38614c;
+}
+.color-indicator-WB {
+  background: -webkit-linear-gradient(315deg, #fafde8 50%, #393736 50%);
+  background: -o-linear-gradient(315deg, #fafde8 50%, #393736 50%);
+  background: linear-gradient(135deg, #fafde8 50%, #393736 50%);
+}
+.color-indicator-WG {
+  background: -webkit-linear-gradient(315deg, #38614c 50%, #fafde8 50%);
+  background: -o-linear-gradient(315deg, #38614c 50%, #fafde8 50%);
+  background: linear-gradient(135deg, #38614c 50%, #fafde8 50%);
+}
+.color-indicator-WR {
+  background: -webkit-linear-gradient(315deg, #da3946 50%, #fafde8 50%);
+  background: -o-linear-gradient(315deg, #da3946 50%, #fafde8 50%);
+  background: linear-gradient(135deg, #da3946 50%, #fafde8 50%);
+}
+.color-indicator-WU {
+  background: -webkit-linear-gradient(315deg, #fafde8 50%, #3277a7 50%);
+  background: -o-linear-gradient(315deg, #fafde8 50%, #3277a7 50%);
+  background: linear-gradient(135deg, #fafde8 50%, #3277a7 50%);
+}
+.color-indicator-UB {
+  background: -webkit-linear-gradient(315deg, #3277a7 50%, #393736 50%);
+  background: -o-linear-gradient(315deg, #3277a7 50%, #393736 50%);
+  background: linear-gradient(135deg, #3277a7 50%, #393736 50%);
+}
+.color-indicator-UG {
+  background: -webkit-linear-gradient(315deg, #38614c 50%, #3277a7 50%);
+  background: -o-linear-gradient(315deg, #38614c 50%, #3277a7 50%);
+  background: linear-gradient(135deg, #38614c 50%, #3277a7 50%);
+}
+.color-indicator-UR {
+  background: -webkit-linear-gradient(315deg, #3277a7 50%, #da3946 50%);
+  background: -o-linear-gradient(315deg, #3277a7 50%, #da3946 50%);
+  background: linear-gradient(135deg, #3277a7 50%, #da3946 50%);
+}
+.color-indicator-BG {
+  background: -webkit-linear-gradient(315deg, #393736 50%, #38614c 50%);
+  background: -o-linear-gradient(315deg, #393736 50%, #38614c 50%);
+  background: linear-gradient(135deg, #393736 50%, #38614c 50%);
+}
+.color-indicator-BR {
+  background: -webkit-linear-gradient(315deg, #393736 50%, #da3946 50%);
+  background: -o-linear-gradient(315deg, #393736 50%, #da3946 50%);
+  background: linear-gradient(135deg, #393736 50%, #da3946 50%);
+}
+.color-indicator-RG {
+  background: -webkit-linear-gradient(315deg, #da3946 50%, #38614c 50%);
+  background: -o-linear-gradient(315deg, #da3946 50%, #38614c 50%);
+  background: linear-gradient(135deg, #da3946 50%, #38614c 50%);
+}
+.color-indicator-WRG {
+  background-image: url(https://assets.scryfall.com/assets/indicators/WRG-077c78008440a0fc0ea2163a8616d6029d85ab7e2d628ded551c9f51dcb9f17e.svg);
+  background-position: center center;
+}
+.color-indicator-UBR {
+  background-image: url(https://assets.scryfall.com/assets/indicators/UBR-b22989918723f46da5daa7e4c0f5832147453ef4271d0e4295dfee11bd467026.svg);
+  background-position: center center;
+}
+.color-indicator-WUBRG {
+  background-image: url(https://assets.scryfall.com/assets/indicators/WUBRG-f9ceccb85a747b73adc61b218f52f082cb67a56ea61d3334186f542e6d21ea52.svg);
+  background-position: center center;
+}

@@ -1,21 +1,64 @@
-import ManaCost from "./ManaCost";
+import "../List.css";
+import ListItems from "./ListItems";
+import { useEffect, useState } from "react";
+import SetCardType from "./SetCardType";
 
+/* Generates an unordered list of banned card from a set 
 
-import useGetCardCollection from "./useGetCardCollection";
+*/
+const SetList = ({ sets }) => {
+  const [cardView, setCardView] = useState({});
 
-/* Generates an unordered list of banned card from a set */
-const SetList = ({ cardlist }) => {
-  const list = useGetCardCollection(cardlist);
+  const toggleModal = () => {
+    const modal = document.getElementById("cardview");
+    const closebtn = document.getElementById("cardview_close");
+
+    modal.style.display = "block";
+    modal.style.overflow = "initial";
+    document.body.style.position = 'fixed';
+
+    closebtn.onclick = function () {
+      modal.style.display = "none";
+
+    };
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+        document.body.style.position = 'fixed';
+      }
+    };
+  };
+
+  /*
+  useEffect(() => {
+   
+  });
+
+*/
 
   return (
-    <ul className="list-group">
-      <li key="222" className="list-group-item setname"> Set Name </li>
-      {list.data.map((card) => (
-        <li key={card.id} className="list-group-item" >
-          {card.name} &nbsp; <ManaCost mana_cost={card.mana_cost} />
-        </li>
-      ))}
-    </ul>
+    <div >
+      <div>
+        {sets.map((setlist, key) => (
+          <ListItems
+            setlist={setlist}
+            key={key}
+            getCard={(card) => setCardView(card)}
+          />
+        ))}
+      </div>
+
+      <div id="cardview" className="modal">
+        <div className="modal__content" style={{ marginTop: 80, overflow: "unset" }}>
+          <a id="cardview_close" className="modal__close">
+            &times;
+          </a>
+          <br />
+          <SetCardType card={cardView} showCard ={()=> toggleModal()}/>
+        </div>
+      </div>
+    </div>
   );
 };
 

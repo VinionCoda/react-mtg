@@ -1,10 +1,10 @@
 import "../Card.css";
 
-const Card = ({card}) => {
-const { image, name, status } = card;
+const Card = (props) => {
+  const { image, name, status } = props;
 
   return (
-    <div className="card">
+    <div className="card card--mod">
       <img src={image} alt={name} className={status} />
       <div className="cardtitle">{name}</div>
     </div>
@@ -12,11 +12,9 @@ const { image, name, status } = card;
 };
 
 Card.defaultProps = {
-  card : {
   image: "../img/index.svg",
   name: "Default Card",
-  status: "blank"
-  }
+  status: "blank",
 };
 
 export default Card;

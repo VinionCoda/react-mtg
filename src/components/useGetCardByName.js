@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 /* returns a Card Object */
-function useGetCard(card) {
+function useGetCardByName(card) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);  
 
@@ -30,4 +30,4 @@ function useGetCard(card) {
   return [data, loading];
 }
 
-export default useGetCard;
+export default useGetCardByName;

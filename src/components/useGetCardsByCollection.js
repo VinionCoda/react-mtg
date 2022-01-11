@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 /* Returns and array of card objects */
-const useGetCardCollection = (cardlist) => {
+const useGetCardsByCollection = (cardlist) => {
   const [test, setTest] = useState({
     object: "list",
     not_found: [],
@@ -42,4 +42,4 @@ const useGetCardCollection = (cardlist) => {
   return test;
 };
 
-export default useGetCardCollection;
+export default useGetCardsByCollection;

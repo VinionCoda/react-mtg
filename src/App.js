@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ViewSelector from "./components/ViewSelector";
+import BannedCardsForm from "./components/BannedCardsForm"
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <div className="container">
         <div className="side"></div>
         <div className="main">
-          <ViewSelector />
+          <BannedCardsForm />
         </div>
       </div>
       <Footer />

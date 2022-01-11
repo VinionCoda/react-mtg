@@ -1,23 +1,28 @@
+
 import Card from "./Card";
 import FlipCard from "./FlipCard";
-import useGetCard from  "./useGetCard";
+import { useState, useEffect } from "react";
 
 /* Generates either a regular card or a Flip Card */
-const SetCardType = ({bol}) => {
-  const name = "Coat of Arms";
-  const status = "banned";
-  const [data, loading] = useGetCard(name);
-  const flip = bol;
+const SetCardType = ({ card, showCard }) => {
+  const [flip, setFlip] = useState(false);
 
-  if (loading)
-    return (
-      <div>
-        <Card />
-      </div>
-    );
+  useEffect(() => {
 
-  return (
-   (flip)? <FlipCard /> : <Card image={data?.image_uris.normal} name={data?.name} status={status} />
+
+    
+   if(Object.keys(card).length > 0){    
+    setFlip((typeof card.card_back != "undefined") && (Object.keys(card.card_back).length > 0))
+    showCard();
+
+   }
+   
+  }, [card]);
+
+  return flip ? (
+    <FlipCard card={card} />
+  ) : (
+    <Card name={card?.card_name} image={card?.card_image} />
   );
 };
 

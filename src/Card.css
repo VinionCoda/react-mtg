@@ -8,6 +8,12 @@
   position: relative;
 }
 
+.card--mod {
+  display: block !important;
+  border: none !important;
+  background-color: transparent !important;
+}
+
 .banned {
   border-radius: 25px;
   border: solid 10px red;
@@ -47,9 +53,7 @@
   cursor: help;
 }
 
-.mana_container{
-  float:right;
+.mana_container {
+  float: right;
   text-align: left;
-
 }
-
