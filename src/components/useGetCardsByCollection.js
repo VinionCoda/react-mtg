@@ -6,37 +6,42 @@ const useGetCardsByCollection = (cardlist) => {
     object: "list",
     not_found: [],
     data: [],
+    error: "first_run",
   });
 
   useEffect(() => {
-    const url = "https://api.scryfall.com/cards/collection";
-    const data = {
-      identifiers: cardlist,
-    };
+    if (Object.keys(cardlist).length > 0) {
+      const url = "https://api.scryfall.com/cards/collection";
+      const data = {
+        identifiers: cardlist,
+      };
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.object !== "error") {
-          setTest(data);
-        } else {
-          console.log("error:", data);
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.object !== "error") {
+            data.error = "";
+            setTest(data);
+          } else {
+            throw data;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
           setTest({
             object: "error",
             not_found: [],
             data: [],
+            error: err,
           });
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+        });
+    }
   }, [cardlist]);
 
   return test;

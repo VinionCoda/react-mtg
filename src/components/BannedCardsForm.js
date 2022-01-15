@@ -1,74 +1,67 @@
-import "../Form.css";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
+import useFormSetBuilder from "./useFormSetBuilder";
+import useGetCardsByCollection from "./useGetCardsByCollection";
+import BannedCardsFormRight from "./BannedCardsFormRight";
 
 /* Form for the entry of Banned Cards */
 const BannedCardsForm = () => {
   const [cardlist, setCardlist] = useState([]);
-  const [test, setTest] = useState({
-    object: "list",
-    not_found: [],
-    data: [],
-  });
 
   const buildCardArr = () => {
     const text = document.getElementById("text_area").value;
-    let text_list = text.split(/\r?\n/);
+    let temp_arr = text.split(/\r?\n/);
+    const text_list = temp_arr.filter((card) => card !== "");
     const card_arr = Array.from(text_list, (card) => {
       return { name: card };
     });
     return card_arr;
   };
 
-  useEffect(() => {
-    const url = "https://api.scryfall.com/cards/collection";
-    const data = {
-      identifiers: cardlist,
-    };
+  const clearAll = () => {
+    document.getElementById("text_area").value = "";
+   setCardlist([{name:"text"}]);
+  };
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.object !== "error") {
-          setTest(data);
-        } else {
-          console.log("error:", data);
-          setTest({
-            object: "error",
-            not_found: [],
-            data: [],
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, [cardlist]);
+
+  const collection = useGetCardsByCollection(cardlist);
+  const card_set = useFormSetBuilder(collection);
 
   return (
-    <div className="list-container">
-      <div className="list-entry">
-        <textarea id="text_area" rows="10" cols="30"></textarea>
-        <br />
-        <label> Enter Card List </label>
+    <div className="ml-5 w-100">
+      <div className="main__left">
+        <label htmlFor="text_area" className="fs-3">
+          Enter Banned Cards:
+        </label>
+        <textarea
+          className="form-control mt-3 mb-4"
+          id="text_area"
+          rows="10"
+        ></textarea>
+        <button
+          className="btn btn-outline-dark"
+          onClick={() => {
+            setCardlist(buildCardArr);
+          }}
+        >
+          Load List
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <button
+          className="btn btn-outline-dark "
+          onClick={() => {
+            clearAll();
+          }}
+        >
+          Clear All
+        </button>
       </div>
+      <hr className="hr_line" />
 
-      <div>
-        <h3> Please confirm card list </h3>
-        <ul>
-          {test.data.map((card, key) => (
-            <li key={key}>{card.name}</li>
-          ))}
-        </ul>
-        <br />
-        <button onClick={() => setCardlist(buildCardArr)}>Confirm</button>
-      </div>
-      {console.log("end of render")}
+      
+      <BannedCardsFormRight card_set ={card_set} />
+
+
     </div>
   );
 };

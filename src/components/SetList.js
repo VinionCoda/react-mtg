@@ -1,8 +1,7 @@
 import "../List.css";
 import ListItems from "./ListItems";
-import { useEffect, useState } from "react";
 import SetCardType from "./SetCardType";
-
+import { useState } from "react";
 /* Generates an unordered list of banned card from a set 
 
 */
@@ -15,30 +14,22 @@ const SetList = ({ sets }) => {
 
     modal.style.display = "block";
     modal.style.overflow = "initial";
-    document.body.style.position = 'fixed';
+    document.body.style.position = "fixed";
 
     closebtn.onclick = function () {
       modal.style.display = "none";
-
     };
 
     window.onclick = function (event) {
       if (event.target === modal) {
         modal.style.display = "none";
-        document.body.style.position = 'fixed';
+        document.body.style.position = "fixed";
       }
     };
   };
 
-  /*
-  useEffect(() => {
-   
-  });
-
-*/
-
   return (
-    <div >
+    <div>
       <div>
         {sets.map((setlist, key) => (
           <ListItems
@@ -50,12 +41,15 @@ const SetList = ({ sets }) => {
       </div>
 
       <div id="cardview" className="modal">
-        <div className="modal__content" style={{ marginTop: 80, overflow: "unset" }}>
+        <div
+          className="modal__content"
+          style={{ marginTop: 80, overflow: "unset" }}
+        >
           <a id="cardview_close" className="modal__close">
             &times;
           </a>
           <br />
-          <SetCardType card={cardView} showCard ={()=> toggleModal()}/>
+          <SetCardType card={cardView} showCard={() => toggleModal()} />
         </div>
       </div>
     </div>

@@ -1,12 +1,11 @@
 import ManaCost from "./ManaCost";
-const ListItems = (props) => {
- 
+const ListItems = (props) => { 
 const {setlist, getCard} = props;
 
   return (
     <ul className="list-group setlist">
       <a
-        href="#"
+        href="#lsit"
         className="list-group-item list-group-item-action active"
         aria-current="true"
       >
@@ -17,7 +16,7 @@ const {setlist, getCard} = props;
       {setlist.limited.map((card) => (
         <a
           key={card.card_id}
-          href="#"
+          href={`#${card.card_id}`}
           onClick={()=>getCard(card)}
           className="list-group-item list-group-item-action"
           aria-current="true"
@@ -36,7 +35,7 @@ const {setlist, getCard} = props;
       {setlist.banned.map((card) => (
         <a
           key={card.card_id}
-          href="#"
+          href={`#${card.card_id}`}
           onClick={()=>getCard(card)}
           className="list-group-item list-group-item-action"
           aria-current="true"

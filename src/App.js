@@ -1,5 +1,5 @@
 import "./App.css";
-import "./Form.css";
+
 import "./Card.css";
 import "./Page.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,9 +13,9 @@ function App() {
   return (
     <div>
       <Header />
-      <div className="container">
-        <div className="side"></div>
-        <div className="main">
+      <div className="body__container">
+        <div className="body__side"></div>
+        <div className="body__main">
           <BannedCardsForm />
         </div>
       </div>
