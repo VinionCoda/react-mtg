@@ -1,13 +1,14 @@
-
 import { useState } from "react";
 import useFormSetBuilder from "./useFormSetBuilder";
 import useGetCardsByCollection from "./useGetCardsByCollection";
 import BannedCardsFormRight from "./BannedCardsFormRight";
+import useGetCardVersion from "./useGetCardVersion";
 
 /* Form for the entry of Banned Cards */
 const BannedCardsForm = () => {
-  const [cardlist, setCardlist] = useState([]);
+  const [cardlist, setCardlist] = useState([]);  
 
+  //Returns a formatted array of card objects
   const buildCardArr = () => {
     const text = document.getElementById("text_area").value;
     let temp_arr = text.split(/\r?\n/);
@@ -18,14 +19,23 @@ const BannedCardsForm = () => {
     return card_arr;
   };
 
+  //clear the contents of text area
   const clearAll = () => {
     document.getElementById("text_area").value = "";
-   setCardlist([{name:"text"}]);
+    setCardlist([{ name: "text" }]);
   };
 
-
+  //build card object collection from remote api
   const collection = useGetCardsByCollection(cardlist);
-  const card_set = useFormSetBuilder(collection);
+
+  //rebuild card object collection using date released
+  /* Needs to be fixed */
+  const rebuild = useGetCardVersion(collection);
+  
+  //create new formated card object array
+  const card_set = useFormSetBuilder(rebuild);
+
+
 
   return (
     <div className="ml-5 w-100">
@@ -57,11 +67,9 @@ const BannedCardsForm = () => {
         </button>
       </div>
       <hr className="hr_line" />
-
-      
-      <BannedCardsFormRight card_set ={card_set} />
-
-
+      {/* Right side panel inserted here */ }
+          {console.log("Form Left: Return")}
+        <BannedCardsFormRight card_set={card_set} />
     </div>
   );
 };

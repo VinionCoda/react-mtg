@@ -1,0 +1,29 @@
+.container--card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container--mod {
+  padding-top: 50px;
+  width: 80%;
+  margin: auto;
+}
+
+.cardtitle {
+  text-align: center;
+}
+
+.setname,
+.rules {
+  font-size: xx-large;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: bold;
+  display: block;
+  padding-top: 20px;
+  text-shadow: 3px 3px 15px rgb(0, 0, 0);
+}
+
+.set_title {
+  background-color: black;
+  color: white;
+}

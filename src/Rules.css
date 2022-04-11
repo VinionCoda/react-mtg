@@ -1,0 +1,64 @@
+.container__rules {
+  background-color: black;
+  color: white;
+}
+
+.rulecontainer {
+  text-align: center;
+  width: 50%;
+  font-family: Georgia;
+  line-height: 1.5;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.rulecontainer li {
+  padding-bottom: 15px;
+  text-align: left;
+}
+
+.rulecontainer b {
+  font-size: 2.9vh;
+}
+
+.rulecontainer p {
+  font-size: xx-large;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.rulecontainer span {
+  padding-top: 100px;
+  font-size: large;
+  font-weight: bold;
+  text-shadow: 3px 3px 15px rgb(0, 0, 0);
+}
+
+.rulecontainer h3 {
+  text-align: left;
+}
+
+.rulecontainer h1 {
+  padding-bottom: 50px;
+}
+
+.rulecontainer article Ul li{
+ list-style: none;
+}
+
+
+@media only screen and (max-width: 610px) {
+    .rulecontainer {
+        font-size: 1.8vh;
+        width: 80%;
+         padding-top: 240px;
+      }
+
+      .h1, h2, h3 {
+        font-size: 2.5vh;
+      }
+
+      .rulecontainer b {
+        font-size: 2.9vh;
+      }
+}

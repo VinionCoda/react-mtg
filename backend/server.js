@@ -14,7 +14,7 @@ mongoose.connect(uri);
 const connection = mongoose.connection;
 
 connection.once("open", () => {
-  console.log("Mongodb connection established");
+console.log("Mongodb connection established");
 });
 
 app.get('/', (req, res) => {

@@ -7,6 +7,8 @@ const useFormSetBuilder = (collection) => {
   });
 
   useEffect(() => {
+
+  console.log(collection);
     const temp_list = collection.data.filter(
       (card) => Object.keys(card).length > 0
     );
@@ -33,7 +35,7 @@ const useFormSetBuilder = (collection) => {
           card_name: card.card_faces[1].name,
           card_type: card.card_faces[1].type_line,
           card_image: card.card_faces[1].image_uris.normal,
-        };
+        }
       } else {
         new_card.card_name = card.name;
         new_card.card_cost = card.mana_cost;
@@ -42,6 +44,7 @@ const useFormSetBuilder = (collection) => {
         new_card.card_back = {};
         new_card.dual_card_name = "";
       }
+
 
       switch (card.rarity) {
         case "uncommon":
@@ -62,13 +65,14 @@ const useFormSetBuilder = (collection) => {
 
     const final_list = new_list.reduce((accumulator, object) => {
       const result = accumulator.find((e) => e.card_name === object.card_name);
-      if (typeof result === "undefined" || result.card_name !== object.card_name) {
+      if (
+        typeof result === "undefined" ||
+        result.card_name !== object.card_name
+      ) {
         accumulator.push(object);
       }
       return accumulator;
     }, []);
-
-    console.log(final_list);
 
     setState({
       object: "list",

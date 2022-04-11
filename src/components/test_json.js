@@ -7,6 +7,7 @@ const test_json = [
       "banned": [
         {
           "card_name": "Heron of Hope",
+          "dual_card_name": "",
           "card_id": "fa7e6933-5c64-4fcd-bb7f-740767a149cb",
           "card_set": "8144b676-569f-4716-8005-bc8f0778f3fa",
           "card_type": "Creature — Bird",
@@ -20,6 +21,7 @@ const test_json = [
         },
         {
           "card_name": "Arm the Cathars",
+          "dual_card_name": "",
           "card_id": "2004a20c-e434-4691-8ef2-740846ce6a51",
           "card_set": "8144b676-569f-4716-8005-bc8f0778f3fa",
           "card_type": "Sorcery",
@@ -33,6 +35,7 @@ const test_json = [
         },
         {
           "card_name": "Katilda, Dawnhart Martyr",
+          "dual_card_name": "Katilda, Dawnhart Martyr // Katilda's Rising Dawn",
           "card_id": 	"0ef240aa-2a88-4ec4-888a-918466372adb",
           "card_set": "8144b676-569f-4716-8005-bc8f0778f3fa",
           "card_type": "Legendary Creature — Spirit Warlock",

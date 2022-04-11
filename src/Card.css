@@ -4,14 +4,11 @@
 }
 
 .card {
-  padding: 15px;
-  position: relative;
-}
-
-.card--mod {
-  display: block !important;
-  border: none !important;
   background-color: transparent !important;
+  border: transparent;
+  max-width: 260px;
+  min-width: 260px;
+  padding: 20px;
 }
 
 .banned {
@@ -32,6 +29,7 @@
 .card img {
   width: 240px;
   height: 336px;
+  text-align: center;
 }
 
 .card-symbol {

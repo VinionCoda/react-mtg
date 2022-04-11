@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const cardSchema = new Schema({
-  card_id: {type: String, unique:true},
+  card_id: { type: String, unique: true },
   card_set: String,
   card_rarity: String,
   card_status: String,
@@ -13,6 +13,7 @@ const cardSchema = new Schema({
   card_cost: String,
   card_type: String,
   card_image: String,
+  rarity_css: String,
   card_back: {
     card_name: String,
     card_type: String,

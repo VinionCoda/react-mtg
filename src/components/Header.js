@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
-
-
+import "../Header.css";
+import { Link } from "react-router-dom";
 const Header = () => {
   useEffect(() => {
     var modal = document.getElementById("myModal");
@@ -34,14 +34,44 @@ const Header = () => {
   return (
     <header className="header">
       <span className="header__icon">
-        <FontAwesomeIcon icon={faBars} size="2x" inverse  />
+        <FontAwesomeIcon icon={faBars} size="2x" inverse />
       </span>
-      <h2 className="header__text">Cleaver Road MTG Group</h2>
-   
+      <h1 id="title">Cleaver Road MTG Banned List</h1>
+      <br />
+
+      <div className="menu">
+        <span className="menu_item">
+          <Link to="/">Home</Link>
+        </span>
+        <span className="menu_item">
+          <Link to="/rules">Group Rules</Link>
+        </span>
+        <span className="menu_item">
+          <Link to="/upload">Edit List</Link>
+        </span>
+        <span className="menu_item">
+          <Link to="/download">Download List</Link>
+        </span>
+      </div>
+
+      <br />
+
+      <h5>
+        Banned Cards <span className="red_square"> &nbsp;&nbsp;&nbsp;</span>{" "}
+        Limited Cards <span className="yellow_square">&nbsp;&nbsp;&nbsp; </span>
+      </h5>
+      <br />
+
       <div id="myModal" className="modal">
         <div className="modal__content">
           <span className="modal__close">&times;</span>
-          <p>Some text in the Modal..</p>
+
+          <nav className="nav flex-column">
+            <Link to="/">Home</Link>
+            <Link to="/rules">Group Rules</Link>
+            <Link to="/upload">Edit List</Link>
+            <Link to="/download">Download List</Link>
+          </nav>
         </div>
       </div>
     </header>
