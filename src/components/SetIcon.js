@@ -13,6 +13,11 @@ const SetIcon = ({ set_id, css }) => {
         const uri = data.icon_svg_uri;
         setState({
           backgroundImage: `url('${uri}')`,
+          minWidth: `25px`,
+          height: `25px`,
+          backgroundRepeat: `no-repeat`,
+          backgroundPositionY: `center`,
+          marginRight:`5px`
         });
       });
   }, [set_id]);

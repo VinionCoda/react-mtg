@@ -7,36 +7,27 @@ const useGetCardVersion = (collection) => {
     data: [],
   });
 
-  const [arr, setArr] = useState([]);
-
   useEffect(() => {
-    const fetchData = (card) => {
-      return fetch(card.prints_search_uri)
-        .then((data) => {
-          return data.json();
-        })
-        .then((res) => {
-          const t = res.data.reduce((pr, cr) =>
-            pr.released_at < cr.released_at ? pr : cr
-          );
-
-          let a = arr;
-          a.push(t);
-          setArr(a);
-        });
+    const promises = [];
+    const fetchData = async (card) => {
+      const data = await fetch(card.prints_search_uri);
+      const res = await data.json();
+      card.version = res.data;
+      return card;
     };
 
     for (var card in collection.data) {
-      fetchData(collection.data[card]);
+      promises.push(fetchData(collection.data[card]));
     }
 
-    setState({
-      object: "list",
-      not_found: collection.not_found,
-      data: arr,
+    Promise.all(promises).then((results) => {
+      setState({
+        object: "list",
+        not_found: collection.not_found,
+        data: results,
+      });
     });
-
-  }, [collection, arr]);
+  }, [collection]);
 
   return state;
 };

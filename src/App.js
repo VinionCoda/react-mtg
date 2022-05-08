@@ -1,5 +1,5 @@
 
-import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home";
 import Download from "./components/Download";
@@ -14,7 +14,11 @@ function App() {
         <Route  path="/" element={<Home/>} />
         <Route  path="/upload" element={<Upload/>} />
         <Route  path="/download" element={<Download/>} />
-        <Route  path="/rules" element={<Rules/>} />   
+        <Route  path="/rules" element={<Rules/>} />  
+        <Route
+        path="*"
+        element={<Navigate to="/" replace />}
+    /> 
       </Routes>
     </Router>
   );

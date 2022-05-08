@@ -14,6 +14,7 @@ const cardSchema = new Schema({
   card_type: String,
   card_image: String,
   rarity_css: String,
+  card_version:Array,
   card_back: {
     card_name: String,
     card_type: String,

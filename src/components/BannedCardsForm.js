@@ -1,12 +1,12 @@
 import { useState } from "react";
-import useFormSetBuilder from "./useFormSetBuilder";
+import useBuildCardData from "./useBuildCardData";
 import useGetCardsByCollection from "./useGetCardsByCollection";
 import BannedCardsFormRight from "./BannedCardsFormRight";
 import useGetCardVersion from "./useGetCardVersion";
 
 /* Form for the entry of Banned Cards */
 const BannedCardsForm = () => {
-  const [cardlist, setCardlist] = useState([]);  
+  const [cardlist, setCardlist] = useState([]);
 
   //Returns a formatted array of card objects
   const buildCardArr = () => {
@@ -29,13 +29,10 @@ const BannedCardsForm = () => {
   const collection = useGetCardsByCollection(cardlist);
 
   //rebuild card object collection using date released
-  /* Needs to be fixed */
   const rebuild = useGetCardVersion(collection);
-  
+
   //create new formated card object array
-  const card_set = useFormSetBuilder(rebuild);
-
-
+  const card_set = useBuildCardData(rebuild);
 
   return (
     <div className="ml-5 w-100">
@@ -49,7 +46,7 @@ const BannedCardsForm = () => {
           rows="10"
         ></textarea>
         <button
-          className="btn btn-outline-dark"
+          className="btn btn-outline-dark btn--mod"
           onClick={() => {
             setCardlist(buildCardArr);
           }}
@@ -58,7 +55,7 @@ const BannedCardsForm = () => {
         </button>
         &nbsp;&nbsp;&nbsp;
         <button
-          className="btn btn-outline-dark "
+          className="btn btn-outline-dark btn--mod "
           onClick={() => {
             clearAll();
           }}
@@ -67,9 +64,8 @@ const BannedCardsForm = () => {
         </button>
       </div>
       <hr className="hr_line" />
-      {/* Right side panel inserted here */ }
-          {console.log("Form Left: Return")}
-        <BannedCardsFormRight card_set={card_set} />
+      {/* Right side panel inserted here */}
+      <BannedCardsFormRight card_set={card_set} callback={clearAll} />
     </div>
   );
 };

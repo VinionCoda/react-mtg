@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import cardRouter from "./routes/cards.js";
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
 const uri = "mongodb+srv://mtgclub:R3actmean@cluster0.bmjla.mongodb.net/mtgclub?retryWrites=true&w=majority" ;
 
 app.use(cors());

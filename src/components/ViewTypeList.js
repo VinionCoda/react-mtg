@@ -1,16 +1,13 @@
-import  "../CardView.css";
+import "../CardView.css";
 import ListItems from "./ListItems";
 import test_json from "./test_json";
 
 const ViewTypeList = () => {
-
-    
-  return (
+  return (    
     <>
-    <ListItems setlist={test_json} />
-    
+      <ListItems setlist={test_json} />
     </>
-  )
-}
+  );
+};
 
-export default ViewTypeList
+export default ViewTypeList;

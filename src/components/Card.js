@@ -1,8 +1,9 @@
 import "../Card.css";
 
+//  Generate a mtg card component 
+
 const Card = (props) => {
   const { card } = props;
-
   const image = card.card_image;
   const name = card.card_name;
   const status = card.card_status;

@@ -1,40 +1,37 @@
-@media only screen and (max-width: 500px) {
-  .banned {
-    all: revert;
-    color: red;
-  }
+.banned {
+  all: revert;
+  color: red;
+}
 
-  .limited {
-    all: revert;
-    color: yellowgreen;
-  }
+.limited {
+  all: revert;
+  color: yellowgreen;
+}
 
-  .set_icon {
-    display: inline-block;
-    width: 25px;
-    height: 15px;
-    background-size: cover;
-  }
+.set_icon {
+  display: inline-block;
+  width: 25px;
+  height: 15px;
+  background-size: cover;
+}
 
-  .set_icon--uncommon {
-    filter: invert(94%) sepia(81%) saturate(5639%) hue-rotate(175deg)
-      brightness(85%) contrast(85%);
-  }
+.set_icon--uncommon {
+  filter: invert(94%) sepia(81%) saturate(5639%) hue-rotate(175deg)
+    brightness(85%) contrast(85%);
+}
 
-  .set_icon--rare {
-    filter: invert(94%) sepia(12%) saturate(1533%) hue-rotate(343deg)
-      brightness(86%) contrast(90%);
-  }
+.set_icon--rare {
+  filter: invert(94%) sepia(12%) saturate(1533%) hue-rotate(343deg)
+    brightness(86%) contrast(90%);
+}
 
-  .set_icon--mythic {
-    filter: invert(80%) sepia(43%) saturate(5384%) hue-rotate(339deg)
-      brightness(89%) contrast(90%);
-  }
+.set_icon--mythic {
+  filter: invert(80%) sepia(43%) saturate(5384%) hue-rotate(339deg)
+    brightness(89%) contrast(90%);
+}
 
-  .setlist {
-    margin-bottom: 25px;
-
-  }
+.setlist {
+  margin-bottom: 25px;
 }
 
 .color-indicator {

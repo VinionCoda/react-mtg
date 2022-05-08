@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import symbols from "./Symbols";
 
+//Creates the image for mana symbol
 const DrawSymbol = (props) => {
   const [state, setState] = useState({ backgroundImage: `url("")` });
 
   useEffect(() => {
-    let symbol_id =props.mana_cost;
+    let temp_id =props.mana_cost;
+    let symbol_id = temp_id.replace(/\//g, '');
     const symbol_obj = symbols.find((obj) => {
       return obj[symbol_id];
     });
-
+  
     const symbol_data = symbol_obj[symbol_id].url;
     const symbol_style = { backgroundImage: 'url("' + symbol_data + '")' };
     setState(symbol_style);
