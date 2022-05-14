@@ -3,17 +3,17 @@ import ManaCost from "./ManaCost";
 import SetIcon from "./SetIcon";
 import useGetSetDB from "./useGetSetDB";
 import useGetCardDB from "./useGetCardDB";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import ShowModal from "./ShowModal";
+import { useAuth0 } from "@auth0/auth0-react";
 
 /* The right side of two forms that allow 
 for the addition of new banned cards
 */
 
 //Right Panel of the Banned List Form - Results
-const BannedCardsFormRight = ({ card_set, callback }) => {
+const BannedCardsFormConfirm = ({ card_set, callback }) => {
   const [cardlist, setCardlist] = useState({ data: [] });
+  const { getAccessTokenSilently } = useAuth0();
   const [settings, setSettings] = useState({
     type: "",
     title: "",
@@ -74,14 +74,12 @@ const BannedCardsFormRight = ({ card_set, callback }) => {
         if (res.status === "Success") {
           const title = "  The following cards were entered in the database:";
           handleSettings(title, [], "dialog");
-              
         } else {
           const title = ` Error! Message: ${res.error}`;
           handleSettings(title, [], "dialog");
         }
       });
-      //setCardlist({ data: [] }); 
-
+      //setCardlist({ data: [] });
     }
   };
 
@@ -140,12 +138,19 @@ const BannedCardsFormRight = ({ card_set, callback }) => {
 
   //Save list of MTG Cards
   const saveCollection = async () => {
-    const url = "https://mtgmongodbserver.herokuapp.com/cards/addCollection";
+    const url = "https://mtgmongodbserver.herokuapp.com/auth/addCollection";
+    const token = await getAccessTokenSilently();
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      mode: "cors",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify(cardlist),
     };
+
     const data = await fetch(url, requestOptions);
     const dataJson = await data.json();
     console.log(dataJson);
@@ -154,10 +159,16 @@ const BannedCardsFormRight = ({ card_set, callback }) => {
 
   //Save list of MTG Card Sets
   const saveSets = async (setlist) => {
-    const url = "https://mtgmongodbserver.herokuapp.com/sets/addSetList";
+    const url = "https://mtgmongodbserver.herokuapp.com/auth/addSetList";
+    const token = await getAccessTokenSilently();
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      mode: "cors",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify(setlist),
     };
     const data = await fetch(url, requestOptions);
@@ -273,4 +284,4 @@ const BannedCardsFormRight = ({ card_set, callback }) => {
   );
 };
 
-export default BannedCardsFormRight;
+export default BannedCardsFormConfirm;

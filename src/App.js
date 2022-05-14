@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import Download from "./components/Download";
 import Rules from "./components/Rules";
 import Upload from "./components/Upload";
-
+import UnbanCard from "./components/UnbanCard";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route  path="/" element={<Home/>} />
         <Route  path="/upload" element={<Upload/>} />
+        <Route  path="/unban" element={<UnbanCard/>} />
         <Route  path="/download" element={<Download/>} />
         <Route  path="/rules" element={<Rules/>} />  
         <Route

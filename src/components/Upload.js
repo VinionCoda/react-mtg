@@ -1,14 +1,17 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import BannedCardsForm from "./BannedCardsForm";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useNavigate } from "react-router-dom";
+//import { useAuth0 } from "@auth0/auth0-react";
+//import { useNavigate } from "react-router-dom";
 import "../Upload.css";
 
 const Upload = () => {
-  const { isAuthenticated } = useAuth0();
-  const navigate = useNavigate();
-/*
+  /* 
+  
+ const { isAuthenticated } = useAuth0();
+  
+ const navigate = useNavigate();
+
   if (!isAuthenticated) {
     navigate("/");
   }

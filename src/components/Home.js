@@ -7,11 +7,17 @@ import useViewSelector from "./useViewSelector";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage, faTable, faList } from "@fortawesome/free-solid-svg-icons";
+import { useAuth0 } from "@auth0/auth0-react";
+
+import useBuildViewList from "./useBuildViewList";
 
 import "../Page.css";
 
 const Home = () => {
   const [view, setView] = useState("");
+  const { isAuthenticated, getAccessTokenSilently } = useAuth0();
+
+  console.log(useBuildViewList());
 
   return (
     <>
@@ -21,9 +27,31 @@ const Home = () => {
 
         <div id="side_bar" className="side_bar">
           <div className="side_selector">
-            <LoginButton />{" "}
-            <LogoutButton />{" "}
-            <LoginStatus />{" "}
+            <LoginButton /> <LogoutButton /> <LoginStatus />{" "}
+            <button
+              onClick={async () => {
+                try {
+                  const token = await getAccessTokenSilently();
+                  const response = await fetch(
+                    "https://mtgmongodbserver.herokuapp.com/auth",
+                    {
+                      mode: "cors",
+                      credentials: "same-origin",
+                      headers: {
+                        authorization: `Bearer ${token}`,
+                      },
+                    }
+                  );
+                  const result = await response.json();
+                  console.log(result);
+                } catch (err) {
+                  console.log(err.message);
+                }
+              }}
+            >
+              {" "}
+              Test Secure API
+            </button>
             <button
               onClick={() => {
                 setView("");

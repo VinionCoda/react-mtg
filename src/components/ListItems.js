@@ -19,7 +19,7 @@ const ListItems = (props) => {
                       href={`#${card.card_id}`}
                       className="list-group-item list-group-item-action"
                       aria-current="true"
-                      key={`${ key }`}
+                      key={`${card.card_id}`}
                     >
                       <div className="d-flex w-100 justify-content-between">
                         <SetIcon set_id={card.card_set} css={card.rarity_css} />

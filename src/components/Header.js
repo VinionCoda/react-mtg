@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "../Header.css";
 
 const Header = () => {
-  const {isAuthenticated} = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     var modal = document.getElementById("myModal");
@@ -50,14 +50,24 @@ const Header = () => {
         <span className="menu_item">
           <Link to="/rules">Group Rules</Link>
         </span>
-        {isAuthenticated && (
+
+    
+        {  /*
+        isAuthenticated && (
           <span className="menu_item">
+            <Link to="/upload">Edit List</Link>
+          </span>
+        )
+      
+        */}
+
+        <span className="menu_item">
           <Link to="/upload">Edit List</Link>
         </span>
-        )}
-     {/*   <span className="menu_item">
-          <Link to="/upload">Edit List</Link>
-        </span> */}
+
+        <span className="menu_item">
+          <Link to="/unban">Unban Cards</Link>
+        </span>
         <span className="menu_item">
           <Link to="/download">Download List</Link>
         </span>
@@ -74,11 +84,11 @@ const Header = () => {
       <div id="myModal" className="modal">
         <div className="modal__content">
           <span className="modal__close">&times;</span>
-
           <nav className="nav flex-column">
             <Link to="/">Home</Link>
             <Link to="/rules">Group Rules</Link>
             <Link to="/upload">Edit List</Link>
+            <Link to="/unban">Unban Cards</Link>
             <Link to="/download">Download List</Link>
           </nav>
         </div>
