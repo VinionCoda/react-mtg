@@ -1,0 +1,27 @@
+table {
+  background-color: wheat;
+}
+
+th,
+tr {
+  border: black;
+}
+
+th {
+  text-align: center;
+}
+
+span {
+  display: inline-block;
+}
+
+.set_icon_fix {
+  position: relative;
+  left: 2%;
+}
+
+.container--mod{
+display: flex;
+flex-wrap: wrap;
+
+}

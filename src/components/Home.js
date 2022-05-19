@@ -4,12 +4,12 @@ import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import LoginStatus from "./LoginStatus";
 import useViewSelector from "./useViewSelector";
+
+
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage, faTable, faList } from "@fortawesome/free-solid-svg-icons";
 import { useAuth0 } from "@auth0/auth0-react";
-
-import useBuildViewList from "./useBuildViewList";
 
 import "../Page.css";
 
@@ -17,7 +17,6 @@ const Home = () => {
   const [view, setView] = useState("");
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
 
-  console.log(useBuildViewList());
 
   return (
     <>
