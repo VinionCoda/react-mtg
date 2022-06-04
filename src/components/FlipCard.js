@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import "../FlipCard.css";
 
 const FlipCard = ({ card }) => {
@@ -20,6 +21,7 @@ const FlipCard = ({ card }) => {
   };
 
   return (
+    <Fragment key={card.card_id}>
     <div className="flip-card">
       <div className="flip-card-inner">
         <div className="flip-card-front">
@@ -43,6 +45,7 @@ const FlipCard = ({ card }) => {
         <img src="../img/flip_arrow.png" alt="flip arrow" />
       </div>
     </div>
+    </Fragment>
   );
 };
 

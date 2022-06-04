@@ -1,43 +1,40 @@
+import { useContext, Fragment } from "react";
 import Card from "./Card";
 import FlipCard from "./FlipCard";
-import Accordion from "react-bootstrap/Accordion";
-import { useEffect, useState } from "react";
+import ViewContext from "./ViewContext";
 import "../CardView.css";
 
-const ListCards = ({ setlist }) => {
-  const [setList, setSetList] = useState([]);
+const ListCards = () => {
+  const setlist = useContext(ViewContext);
 
-  useEffect(() => {
-    setSetList(setlist);
-  },[setlist]);
+  if (setlist.length === 0)
+    return (
+      <>
+        <span className="container--loading"></span>
+        <h2 className="container--text">Loading</h2>
+      </>
+    );
 
   return (
     <>
-      <Accordion defaultActiveKey="0" className="w-100">
-        {setList.map((set, key) => {
-          return (
-            <Accordion.Item eventKey={`${key}`}>
-              <Accordion.Header> {set.setname}</Accordion.Header>
-              <Accordion.Body className="container--card">
-                {set.banned.map((card, key) =>
-                  card.dual_card_name === "" ? (
-                    <Card card={card} />
-                  ) : (
-                    <FlipCard card={card} />
-                  )
-                )}
-                {set.limited.map((card, key) =>
-                  card.dual_card_name === "" ? (
-                    <Card card={card} />
-                  ) : (
-                    <FlipCard card={card} />
-                  )
-                )}
-              </Accordion.Body>
-            </Accordion.Item>
-          );
-        })}
-      </Accordion>
+      <h3 className="container__heading ">List of Banned Cards</h3>
+      {setlist.map((set) => (
+        <Fragment key={set.set_id}>
+          <div className="container--name" id={set.set_id}>
+            <h3 className="setname--card" > {set.setname} </h3>
+            <div className="container--card" >
+              {set.banned.map((card, key) =>
+                card.dual_card_name === "" ? (
+                  <Card card={card} />
+                ) : (
+                  <FlipCard card={card} />
+                )
+              )}
+            </div>
+            <hr />
+          </div>
+        </Fragment>
+      ))}
     </>
   );
 };

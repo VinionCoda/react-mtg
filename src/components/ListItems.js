@@ -1,13 +1,16 @@
+import { useContext } from "react";
 import ManaCost from "./ManaCost";
 import SetIcon from "./SetIcon";
 import Accordion from "react-bootstrap/Accordion";
+import ViewContext from "./ViewContext";
+import "../CardView.css";
 
-const ListItems = (props) => {
-  const { setlist } = props;
+const ListItems = () => {
+  const setlist = useContext(ViewContext);
 
   return (
     <>
-      <Accordion defaultActiveKey="0" className="w-100">
+      <Accordion  className="w-100">
         {setlist.map((set, key) => {
           return (
             <Accordion.Item eventKey={`${ key }`}>        

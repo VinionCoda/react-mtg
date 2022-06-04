@@ -3,6 +3,10 @@
   flex-wrap: wrap;
 }
 
+.container--name {
+  text-align: left !important;
+}
+
 .container--mod {
   padding-top: 50px;
   width: 80%;

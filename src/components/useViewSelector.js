@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
+import ListCards from "./ListCards";
+import ListItems from "./ListItems";
+import ListTable from "./ListTable";
 
-import ViewTypeCards from "./ViewTypeCards";
-import ViewTypeList from "./ViewTypeList";
-import ViewTypeTable from "./ViewTypeTable";
 
 /* This Component Selects the view based on screne size */
 const useViewSelector = (view) => {
- 
-  const [state, setState] = useState(<ViewTypeCards />); 
+  const [state, setState] = useState(<ListCards />);
 
   useEffect(() => {
     if (view === "ViewTable") {
-      setState(<ViewTypeTable />);
+      setState(<ListTable />);
     } else if (view === "ViewList") {
-      setState(<ViewTypeList/>);
+      setState(<ListItems />);
     } else {
-      setState(<ViewTypeCards />);
+      setState( <div id="cardcontainer"> <ListCards /></div> );
     }
   }, [view]);
 
-  return state;
+  return  state ;
 };
 
 export default useViewSelector;

@@ -133,6 +133,7 @@ const UnbanCard = () => {
             </div>
           </div>{" "}
         </div>{" "}
+        <div id="side_bar" className="side_bar"></div>
       </div>
       <button onclick="topFunction()" id="myBtn" title="Go to top">
         Top

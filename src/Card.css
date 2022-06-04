@@ -47,7 +47,7 @@
   background-size: 100% 100%;
   background-position: top left;
   -webkit-print-color-adjust: exact;
-  color-adjust: exact;
+  print-color-adjust: exact;
   cursor: help;
 }
 

@@ -7,7 +7,6 @@
 
 .body__side {
   min-width: 200px;
-
 }
 
 .body__main {
@@ -20,12 +19,80 @@
 }
 
 .side_bar {
-  display: flex;
+  display: block !important;
   width: 20%;
+  background-color: black;
+  background-image: url("../public/img/re.webp");
+  text-align: center;
+  min-width: 160px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.side_bar__jumplist {
+  background-color: #252323;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.jumplist__ul{
+  list-style-type: none;
+
+  margin-top: 10px;
+  padding: 0;
+  text-align: left;
+}
+
+.side_bar h2,
+h3 {
+  font-size: 1em;
+  overflow-wrap: anywhere;
+}
+
+.side_bar p {
+  font-size: 0.8em;
+  overflow-wrap: anywhere;
+}
+
+.side_bar button {
+  margin-top: 10px;
 }
 
 .side_selector {
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  display: grid;
+}
+
+.container {
+  padding-top: 20px;
+}
+
+.container__heading {
+  font-size: xx-large;
+  text-shadow: 6px 5px 5px rgb(0, 0, 0);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container--loading {
+  background-image: url("../public/img/load.webp");
+  width: 200px;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  margin-left: 35%;
+  margin-top: 20px;
+}
+
+.container--text {
+  margin-left: 40%;
+}
+
+.setname--card {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 600;
+  font-size: large;
 }
 
 .footer {
@@ -72,7 +139,7 @@
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 610px) {
   * {
     margin: 0;
     padding: 0;
@@ -83,7 +150,7 @@
   }
 
   body {
-    max-width: 500px;
+    max-width: 610px;
     min-height: 400px;
     max-height: 500px;
   }
@@ -97,8 +164,7 @@
   }
 
   .side_bar {
-    display:none;
-   
+    display: none !important;
   }
 
   .footer {
@@ -114,5 +180,25 @@
 
   .space_er {
     min-height: 200px;
+  }
+
+  .side_bar {
+    display: none;
+  }
+
+  .container {
+    margin-top: 250px;
+    padding-top: 0px;
+  }
+
+  .card_type--mod {
+    padding-left: 30px;
+  }
+  .text-start {
+    padding-left: 10px;
+  }
+
+  .list__banned {
+    width: 100%;
   }
 }

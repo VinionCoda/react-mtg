@@ -15,24 +15,18 @@ const useGetAllDB = (refresh) => {
     return res;
   };
 
-  const cardlist = viewlist.length > 0 ? viewlist[0] : [];
-  const setlist = viewlist.length > 0 ? viewlist[1] : [];
-
   useEffect(() => {
     const promises = [];
-
     promises.push(fetchCards());
     promises.push(fetchSets());
-
     Promise.all(promises).then((results) => {
       setViewList(results);
-
     });
   }, [refresh]);
 
   console.log("buildview is repeating");
 
-  return [cardlist, setlist ];
+  return viewlist ;
 };
 
 export default useGetAllDB;

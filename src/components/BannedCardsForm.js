@@ -3,6 +3,7 @@ import useBuildCardData from "./useBuildCardData";
 import useGetCardsByCollection from "./useGetCardsByCollection";
 import BannedCardsFormConfirm from "./BannedCardsFormConfirm";
 import useGetCardVersion from "./useGetCardVersion";
+import ViewContext from "./ViewContext";
 
 /* Form for the entry of Banned Cards */
 const BannedCardsForm = () => {
@@ -12,7 +13,7 @@ const BannedCardsForm = () => {
   const buildCardArr = () => {
     const text = document.getElementById("text_area").value;
     let temp_arr = text.split(/\r?\n/);
-    const text_list = temp_arr.filter((card) => card !== "");
+    const text_list = temp_arr.filter((card) => /\S/.test(card));
     const card_arr = Array.from(text_list, (card) => {
       return { name: card };
     });
@@ -33,6 +34,10 @@ const BannedCardsForm = () => {
 
   //create new formated card object array
   const card_set = useBuildCardData(rebuild);
+
+  console.log(card_set);
+
+  const options = { card_set, clearAll };
 
   return (
     <div className="ml-5 w-100">
@@ -65,7 +70,9 @@ const BannedCardsForm = () => {
       </div>
       <hr className="hr_line" />
       {/* Right side panel inserted here */}
-      <BannedCardsFormConfirm card_set={card_set} callback={clearAll} />
+      <ViewContext.Provider value={options}>
+        <BannedCardsFormConfirm card_set={card_set} callback={clearAll} />
+      </ViewContext.Provider>
     </div>
   );
 };

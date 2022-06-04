@@ -6,11 +6,17 @@ const LoginStatus = () => {
   const { user, isAuthenticated } = useAuth0();
 
   return (
-    isAuthenticated && (
-      <div>
-        <h3><FontAwesomeIcon icon={faUser} /> {user.name}</h3>
-        <h3>{user.email}</h3>
-      </div>
+    isAuthenticated ? (
+      <>
+           <div className="user--svg">
+      <img src={user.picture} alt={user.name} />
+      </div>{/* <FontAwesomeIcon icon={faUser} size="4x" /> */}
+      <hr />
+        <h3>{user.name}</h3>
+        <p>{user.email}</p>
+      </>
+    ):(
+      <p>Please Log-In</p>
     )
   );
 };

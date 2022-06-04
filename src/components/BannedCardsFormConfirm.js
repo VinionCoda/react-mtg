@@ -1,19 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+
 import ManaCost from "./ManaCost";
 import SetIcon from "./SetIcon";
-import useGetSetDB from "./useGetSetDB";
-import useGetCardDB from "./useGetCardDB";
+import useGetAllDB from "./useGetAllDB";
 import ShowModal from "./ShowModal";
-import { useAuth0 } from "@auth0/auth0-react";
+import ViewContext from "./ViewContext";
 
 /* The right side of two forms that allow 
 for the addition of new banned cards
 */
 
 //Right Panel of the Banned List Form - Results
-const BannedCardsFormConfirm = ({ card_set, callback }) => {
-  const [cardlist, setCardlist] = useState({ data: [] });
+const BannedCardsFormConfirm = () => {
+  const { card_set, clearAll } = useContext(ViewContext);
   const { getAccessTokenSilently } = useAuth0();
+
+  const [cardlist, setCardlist] = useState(card_set);
   const [settings, setSettings] = useState({
     type: "",
     title: "",
@@ -21,7 +24,7 @@ const BannedCardsFormConfirm = ({ card_set, callback }) => {
     buttonlayout: "confirm",
     arr: [],
     priority: "primary",
-    toogle: false,
+    toggle: false,
     callback: "",
     callback2: "",
   });
@@ -34,7 +37,7 @@ const BannedCardsFormConfirm = ({ card_set, callback }) => {
       buttonlayout: buttonlayout,
       arr: data,
       priority: "primary",
-      toogle: true,
+      toggle: true,
       callback: closeSettings,
       callback2: removeListOfItems,
     });
@@ -47,13 +50,14 @@ const BannedCardsFormConfirm = ({ card_set, callback }) => {
       buttonlayout: "confirm",
       arr: [],
       priority: "primary",
-      toogle: false,
+      toggle: false,
       callback: closeSettings,
       callback2: "",
     });
 
-  let setDB = useGetSetDB(cardlist);
-  let cardDB = useGetCardDB(cardlist);
+  const temp = useGetAllDB(cardlist);
+  let setDB = temp[1];
+  let cardDB = temp[0];
 
   //Save and reset form
   const sendCards = () => {
@@ -69,24 +73,42 @@ const BannedCardsFormConfirm = ({ card_set, callback }) => {
       handleSettings(title, dupes, "confirm");
     } else {
       setStatus();
+      const templist = cardlist.data;
       saveSets(setlist);
-      saveCollection().then((res) => {
-        if (res.status === "Success") {
-          const title = "  The following cards were entered in the database:";
+      saveCollection()
+        .then((res) => {
+          if (res.status === "Success") {
+            const title = "The following cards were entered in the database:";
+            handleSettings(title, templist, "dialog");
+            setCardlist({ data: [] });
+            clearAll();
+          } else {
+            const title = `The following cards are already in database:`;
+            let temp_arr = res.error.split(/"(.*?)"/);
+            let bad_arr = [];
+            temp_arr.forEach((txt) => {
+              let x = templist.findIndex((temp_card) => {
+                return temp_card.card_id === txt;
+              });
+              if (x !== -1) {
+                bad_arr.push(templist[x]);
+              }
+            });
+            handleSettings(title, bad_arr, "confirm");
+          }
+        })
+        .catch((e) => {
+          const title = ` Critical! Message: ${e.message}`;
           handleSettings(title, [], "dialog");
-        } else {
-          const title = ` Error! Message: ${res.error}`;
-          handleSettings(title, [], "dialog");
-        }
-      });
-      //setCardlist({ data: [] });
+        });
     }
   };
 
   //Find illegal cards in user card list
   const findLegacy = (collection) => {
     let arr = collection.data.filter(
-      (card) => card.card_release < "2012-10-05"
+      (card) => card.card_legality ==="not_legal" && card.card_set !=="c1c7eb8c-f205-40ab-a609-767cb296544e" &&
+      card.card_set !== "d7efccd6-55bc-4fb8-9138-e72577510a99"
     );
     return arr;
   };
@@ -132,6 +154,14 @@ const BannedCardsFormConfirm = ({ card_set, callback }) => {
           });
         }
       });
+      if (card.card_version.length === 0) {
+        arr.push({
+          scry_set_id: card.card_set,
+          set_name: card.card_setname,
+          set_uri: "",
+          set_release: card.card_releasee,
+        });
+      }
     });
     return { data: arr };
   };
@@ -153,7 +183,6 @@ const BannedCardsFormConfirm = ({ card_set, callback }) => {
 
     const data = await fetch(url, requestOptions);
     const dataJson = await data.json();
-    console.log(dataJson);
     return dataJson;
   };
 
@@ -173,7 +202,6 @@ const BannedCardsFormConfirm = ({ card_set, callback }) => {
     };
     const data = await fetch(url, requestOptions);
     const dataJson = await data.json();
-    console.log(dataJson);
     return dataJson;
   };
 

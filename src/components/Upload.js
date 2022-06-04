@@ -6,17 +6,7 @@ import BannedCardsForm from "./BannedCardsForm";
 import "../Upload.css";
 
 const Upload = () => {
-  /* 
-  
- const { isAuthenticated } = useAuth0();
-  
- const navigate = useNavigate();
 
-  if (!isAuthenticated) {
-    navigate("/");
-  }
-
-  */
   return (
     <>
       <Header />
@@ -27,8 +17,9 @@ const Upload = () => {
         <div className="container">
           <BannedCardsForm />
         </div>
+        <div id="side_bar" className="side_bar"></div>
       </div>
-      <button onclick="topFunction()" id="myBtn" title="Go to top">
+      <button id="myBtn" title="Go to top">
         Top
       </button>
 

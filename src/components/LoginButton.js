@@ -10,6 +10,8 @@ const LoginButton = () => {
         onClick={() => {
           loginWithPopup();
         }}
+
+        className="btn btn-success"
       >
         Log In
       </button>

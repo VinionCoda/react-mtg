@@ -1,22 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { Auth0Provider } from "@auth0/auth0-react";
+import Auth0Context from "./components/Auth0Context";
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const clientID = process.env.REACT_APP_AUTH0_CLIENT_ID;
-const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
 ReactDOM.render(
-  <Auth0Provider
-    domain={domain}
-    clientId={clientID}
-    redirectUri={window.location.origin}
-    audience={audience}
-    useRefreshTokens={true}
-    cacheLocation="memory"
-    scope="read:current_user update:current_user_metadata"
-  >
+  <React.StrictMode>
+  <Auth0Context>
     <App />
-  </Auth0Provider>,
+  </Auth0Context>
+</React.StrictMode>,
   document.getElementById("root")
 );

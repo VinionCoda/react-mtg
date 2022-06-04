@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import "../Card.css";
 
 //  Generate a mtg card component 
@@ -9,10 +10,12 @@ const Card = (props) => {
   const status = card.card_status;
 
   return (
+    <Fragment key={card.card_id}>
     <div className="card">
       <img src={image} alt={name} className={status} />
       <div className="cardtitle">{name}</div>
     </div>
+    </Fragment>
   );
 };
 

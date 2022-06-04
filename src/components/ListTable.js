@@ -1,11 +1,12 @@
+import { useContext } from "react";
 import ManaCost from "./ManaCost";
 import SetIcon from "./SetIcon";
 import Table from "react-bootstrap/Table";
+import ViewContext from "./ViewContext";
 import "../TableView.css";
 
-const ListTable = (props) => {
-  const { setlist } = props;
-
+const ListTable = () => {
+  const setlist = useContext(ViewContext);
   return (
     <>
       <Table striped bordered hover size="sm">
