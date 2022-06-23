@@ -61,7 +61,7 @@ const Header = () => {
       <HeaderUserWidget />
       <br />
 
-      <ShowModal type="menu" showItem={toggle} funct={toggleModal} />
+      <ShowModal settings = {{}} show = {toggle} type={"menu"} funct={toggleModal} />
     </header>
   );
 };

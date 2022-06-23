@@ -5,7 +5,6 @@ const FlipCard = ({ card }) => {
   const { card_name, card_image, card_status, card_back } = card;
 
   const flip = (e) => {
-    console.log();
     const inner =
       e.target.parentElement.parentElement.getElementsByClassName(
         "flip-card-inner"

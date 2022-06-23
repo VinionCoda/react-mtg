@@ -3,7 +3,6 @@ import Footer from "./Footer";
 
 import useViewSelector from "./useViewSelector";
 import ViewContext from "./ViewContext";
-import useGetAllDB from "./useGetAllDB";
 import SideBarUserWidget from "./SideBarUserWidget";
 import ReturnToTopButton from "./ReturnToTopButton";
 import JumpToWidget from "./JumpToWidget";
@@ -12,11 +11,13 @@ import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-
+import { buildViewData } from "./ViewContext";
 import "../Page.css";
 
 const Home = () => {
   const [view, setView] = useState("");
+  const [data, setData] = useState([]);
+  sessionStorage.setItem("Update",false);
 
   const toggleView = () => {
     switch (view) {
@@ -30,25 +31,13 @@ const Home = () => {
     }
   };
 
-  const temp = useGetAllDB(view);
+  const viewUpdate = localStorage.getItem("Update");
 
-  const sort_cards =
-    temp.length > 0
-      ? temp[0].sort((a, b) => a.card_name.localeCompare(b.card_name))
-      : [];
-  const sort_sets =
-    temp.length > 0
-      ? temp[1].sort((a, b) => a.set_release > b.set_release)
-      : [];
-
-  const rebuild = sort_sets.map((set) => {
-    return {
-      set_id: set.scry_set_id,
-      setname: set.set_name,
-      banned: sort_cards.filter((card) => card.card_set === set.scry_set_id),
-      limited: [],
-    };
-  });
+  useEffect(() => {
+    buildViewData().then((result) => {
+      setData(result);
+    });
+  }, [viewUpdate]);
 
   useEffect(() => {
     const setViewLook = () => {
@@ -65,6 +54,8 @@ const Home = () => {
     return () => window.removeEventListener("resize", setViewLook);
   });
 
+
+
   return (
     <>
       <Header />
@@ -78,12 +69,12 @@ const Home = () => {
           <hr />
           <SideBarUserWidget />
           <hr />
-          {view === "" ? <JumpToWidget setlist={rebuild} /> : ""}
+          {view === "" ? <JumpToWidget setlist={data} /> : ""}
         </div>
 
         {/* Main Container */}
         <div className="container">
-          <ViewContext.Provider value={rebuild}>
+          <ViewContext.Provider value={data}>
             {useViewSelector(view)}
           </ViewContext.Provider>
         </div>
