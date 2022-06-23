@@ -18,8 +18,6 @@ const UnbanCard = () => {
     data: [],
     toggle: false,
   });
-  
-  let cardDB = useGetCardDB(banned);
 
   const verify = (id) => {
     const card = cardlist.data.find((card) => card.card_id === id);
@@ -38,12 +36,23 @@ const UnbanCard = () => {
     setText(value);
   };
 
-  const removeCard = (id)=>{
-
-    
-  }
+  const removeCard = (id) => {};
 
   useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const data = await fetch(
+          "https://mtgmongodbserver.herokuapp.com/cards"
+        );
+        const res = await data.json();
+        return res;
+      } catch (error) {
+        console.log(error);
+        return [];
+      }
+    };
+    const cardDB = fetchCards();
+
     const temp_sort = cardDB.sort((a, b) =>
       a.card_name.localeCompare(b.card_name)
     );
@@ -127,7 +136,7 @@ const UnbanCard = () => {
         </div>{" "}
         <div id="side_bar" className="side_bar"></div>
       </div>
-      <button  id="myBtn" title="Go to top">
+      <button id="myBtn" title="Go to top">
         Top
       </button>
 
