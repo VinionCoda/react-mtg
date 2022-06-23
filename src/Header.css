@@ -3,7 +3,7 @@
   text-align: center;
   font: size 10vh;
   color: white;
-  background-image: url("../public/img/cap.jpg");
+  background-image: url("./assests/img/cap.jpg");
   background-position-x: center;
   background-position-y: -52px;
   background-size: cover;
@@ -142,11 +142,10 @@ body {
     position: fixed;
     z-index: 9;
     background-color: black;
-    background-image: url("../public/img/SNC_Xander.webp");
+    background-image: url("./assests/img/SNC_Xander.webp");
     background-size: cover;
     background-position-x: center;
     padding-top: 20px;
-
     max-width: 610px;
     min-height: 200px;
     max-height: 400px;

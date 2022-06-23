@@ -22,7 +22,7 @@
   display: block !important;
   width: 20%;
   background-color: black;
-  background-image: url("../public/img/re.webp");
+  background-image: url("./assests/img/re.webp");
   text-align: center;
   min-width: 160px;
   padding-right: 8px;
@@ -76,7 +76,7 @@ h3 {
 }
 
 .container--loading {
-  background-image: url("../public/img/load.webp");
+  background-image: url("./assests/img/load.webp");
   width: 200px;
   height: 200px;
   background-position: center;

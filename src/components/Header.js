@@ -6,7 +6,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import ShowModal from "./ShowModal";
 import HeaderUserWidget from "./HeaderUserWidget";
-
 import "../Header.css";
 
 const HeaderNavi = ({ isAuthenticated }) => {

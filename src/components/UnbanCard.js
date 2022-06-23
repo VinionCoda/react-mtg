@@ -18,6 +18,7 @@ const UnbanCard = () => {
     data: [],
     toggle: false,
   });
+  
   let cardDB = useGetCardDB(banned);
 
   const verify = (id) => {
