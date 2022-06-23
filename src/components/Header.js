@@ -1,16 +1,52 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-//import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import ShowModal from "./ShowModal";
 import HeaderUserWidget from "./HeaderUserWidget";
 
 import "../Header.css";
 
+const HeaderNavi = ({ isAuthenticated }) => {
+  return isAuthenticated ? (
+    <div className="menu">
+      <span className="menu_item">
+        <Link to="/">Home</Link>
+      </span>
+      <span className="menu_item">
+        <Link to="/rules">Group Rules</Link>
+      </span>
+
+      <span className="menu_item">
+        <Link to="/upload">Edit List</Link>
+      </span>
+      <span className="menu_item">
+        <Link to="/unban">Unban Cards</Link>
+      </span>
+
+      <span className="menu_item">
+        <Link to="/download">Download List</Link>
+      </span>
+    </div>
+  ) : (
+    <div className="menu">
+      <span className="menu_item">
+        <Link to="/">Home</Link>
+      </span>
+      <span className="menu_item">
+        <Link to="/rules">Group Rules</Link>
+      </span>
+      <span className="menu_item">
+        <Link to="/download">Download List</Link>
+      </span>
+    </div>
+  );
+};
+
 const Header = () => {
-  //const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   const [toggle, setToggle] = useState(false);
 
   const toggleModal = () => {
@@ -30,26 +66,7 @@ const Header = () => {
         Cleaver Road MTG Banned List
       </h1>
       <br />
-
-      <div className="menu">
-        <span className="menu_item">
-          <Link to="/">Home</Link>
-        </span>
-        <span className="menu_item">
-          <Link to="/rules">Group Rules</Link>
-        </span>
-      
-        <span className="menu_item">
-          <Link to="/upload">Edit List</Link>
-        </span>
-        <span className="menu_item">
-          <Link to="/unban">Unban Cards</Link>
-        </span>
-
-        <span className="menu_item">
-          <Link to="/download">Download List</Link>
-        </span>
-      </div>
+      <HeaderNavi isAuthenticated={isAuthenticated} />
 
       <br />
 
@@ -61,7 +78,12 @@ const Header = () => {
       <HeaderUserWidget />
       <br />
 
-      <ShowModal settings = {{}} show = {toggle} type={"menu"} funct={toggleModal} />
+      <ShowModal
+        settings={{}}
+        show={toggle}
+        type={"menu"}
+        funct={toggleModal}
+      />
     </header>
   );
 };

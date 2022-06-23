@@ -15,14 +15,9 @@ const UnbanCard = () => {
     type: "",
     title: "",
     text: "",
-    buttonlayout: "confirm",
-    arr: [],
-    priority: "primary",
-    toogle: false,
-    callback: "",
-    callback2: "",
+    data: [],
+    toggle: false,
   });
-
   let cardDB = useGetCardDB(banned);
 
   const verify = (id) => {
@@ -30,15 +25,11 @@ const UnbanCard = () => {
     const name =
       card.dual_card_name !== "" ? card.dual_card_name : card.card_name;
     setSettings({
-      type: "confirm",
-      title: "Remove Card",
-      text: `Do you want to remove ${name}`,
-      buttonlayout: "confirm",
-      arr: [card],
-      priority: "primary",
-      toogle: false,
-      callback: removeCard,
-      callback2: "",
+      type: "",
+      title: "",
+      text: "",
+      data: [],
+      toggle: false,
     });
   };
 
@@ -135,7 +126,7 @@ const UnbanCard = () => {
         </div>{" "}
         <div id="side_bar" className="side_bar"></div>
       </div>
-      <button onclick="topFunction()" id="myBtn" title="Go to top">
+      <button  id="myBtn" title="Go to top">
         Top
       </button>
 
