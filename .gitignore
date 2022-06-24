@@ -24,4 +24,4 @@ yarn-error.log*
 
 #misc
 
-/src/components/Upload.js
+/src/components/Upload
