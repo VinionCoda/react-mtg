@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'cleavermtgclub'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A717C0921F944D1590B7C96C90A4D5AB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_918A0CB8339C4CA598E24BD73B0B92D3 }}
           package: .
