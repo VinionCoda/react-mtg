@@ -14,17 +14,17 @@ const HeaderStatus = () => {
 
       <div className="user--info">
         <h3>{user.name}</h3>
-        <p>{user.email}</p>
+
       </div>
     </>
   ) : (
     <>
       <div className="user--svg">
-      <FontAwesomeIcon icon={faUser} size="4x" />
+      <FontAwesomeIcon icon={faUser} size="2x" />
       </div>
       <div className="user--info">
         <h3>Please login</h3>
-        <p></p>
+  
       </div>
     </>
   );

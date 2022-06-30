@@ -1,11 +1,11 @@
 
 import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./components/Home";
-import Download from "./components/Download";
-import Rules from "./components/Rules";
-import Upload from "./components/Upload";
-import UnbanCard from "./components/UnbanCard";
+import Home from "./components/page/Home";
+import Download from "./components/page/Download";
+import Rules from "./components/page/Rules";
+import Upload from "./components/page/Upload";
+import UnbanCard from "./components/page/UnbanCard";
 
 function App() {
   return (

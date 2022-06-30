@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import Auth0Context from "./components/Auth0Context";
+import Auth0Context from "./components/functional/Auth0Context";
 
 ReactDOM.render(
   <React.StrictMode>
