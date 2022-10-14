@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import symbols from "./Symbols";
 
-//Creates the image for mana symbol
+//Renderd MTG Symbol used for Mana Cost
 const DrawSymbol = (props) => {
   const [state, setState] = useState({ backgroundImage: `url("")` });
 

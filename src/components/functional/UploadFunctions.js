@@ -2,6 +2,8 @@ import { useRef } from "react";
 import ManaCost from "./ManaCost";
 import SetIcon from "./SetIcon";
 
+/*  A GROUP OF FUNCTIONS RELATED TO THE ADDITION AND REMOVAL OF BANNED CARDS  */
+
 //Fetch Card DB
 const fetchCards = async () => {
   try {
@@ -22,6 +24,42 @@ const fetchSets = async () => {
   } catch (error) {
     return { status: "Failed", error: error.message };
   }
+};
+
+//Delete card from database
+export const removeMTGCard = async (card, callback) => {
+  try {
+    const token = await callback();
+    const url = "https://mtgmongodbserver.herokuapp.com/auth/removeCard";
+    const requestOptions = {
+      method: "POST",
+      mode: "cors",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(card),
+    };
+
+    const data = await fetch(url, requestOptions);
+    const dataJson = await data.json();
+    console.log(dataJson);
+    return dataJson;
+  } catch (error) {
+    console.log(error);
+    return { status: "failed" };
+  }
+};
+
+export const fetchAndSortCardDB = async () => {
+  const temp = await fetchCards();
+
+  const temp_sort = temp.sort((a, b) =>
+    a.card_name.localeCompare(b.card_name) ? 1 : -1
+  );
+
+  return temp_sort;
 };
 
 //clear the contents of text area
@@ -259,6 +297,62 @@ export const CardListDisplay = ({ cardlist, setCardlist }) => {
               className="btn btn-sm btn-outline-danger"
               onClick={() => {
                 removeItem(card.card_id);
+              }}
+            >
+              Remove
+            </button>
+          </div>
+        </a>
+      ))}
+    </div>
+  );
+};
+
+export const CardListRemove = ({ cardlist, callback }) => {
+
+  return (
+    <div id="card_list" className="list-group list__banned list--mod">
+      {cardlist.map((card, key) => (
+        <a
+          href={`#${card.card_id}`}
+          className="list-group-item list-group-item-action"
+          aria-current="true"
+          key={key}
+        >
+          <div className="d-flex w-100 ">
+            <SetIcon set_id={card.card_set} css={card.rarity_css} />
+            <h5 className="mb-1 text-start card_name--mod">
+              {card.dual_card_name !== ""
+                ? card.dual_card_name
+                : card.card_name}
+            </h5>
+
+            <small className="w-50 float-end">
+              <ManaCost mana_cost={card.card_cost} />
+            </small>
+          </div>
+          <div className="line--mod">
+            <span className="">{card.card_type}</span>
+            <span className="">{card.card_setname}</span>
+          </div>
+
+          <div className="form-check line--right chk_btn">
+            <div>
+              <label className="form-check-label  " htmlFor="defaultCheck1">
+                Limited
+              </label>
+              {"  "}{" "}
+              <input
+                className="form-check-input float-end"
+                type="checkbox"
+                id="defaultCheck1"
+                name={card.card_id}
+              />
+            </div>
+            <button
+              className="btn btn-sm btn-outline-danger"
+              onClick={() => {
+                callback(card);
               }}
             >
               Remove

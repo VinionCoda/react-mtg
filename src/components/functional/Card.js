@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import "../../Card.css";
 
-//  Generate a mtg card component 
+//Renders a MTG Card
 
 const Card = (props) => {
   const { card } = props;

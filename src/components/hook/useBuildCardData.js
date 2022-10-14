@@ -126,6 +126,7 @@ const useCreateCardData = (collection) => {
             let new_card = {
               card_id: temp_card.id,
               card_set: temp_card.set_id,
+              card_set_code: temp_card.set,
               card_set_uri: temp_card.set_uri,
               card_setname: temp_card.set_name,
               card_rarity: temp_card.rarity,

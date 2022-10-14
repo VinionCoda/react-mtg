@@ -1,8 +1,6 @@
 import Header from "../functional/Header";
 import Footer from "../functional/Footer";
 import BannedCardsForm from "../functional/BannedCardsForm";
-//import { useAuth0 } from "@auth0/auth0-react";
-//import { useNavigate } from "react-router-dom";
 import "../../Upload.css";
 
 const Upload = () => {

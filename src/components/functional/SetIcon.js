@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+//Renders Set Icon SVG
 const SetIcon = ({ set_id, css }) => {
   const [state, setState] = useState({});
 

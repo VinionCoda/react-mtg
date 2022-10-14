@@ -6,6 +6,7 @@ import Download from "./components/page/Download";
 import Rules from "./components/page/Rules";
 import Upload from "./components/page/Upload";
 import UnbanCard from "./components/page/UnbanCard";
+import Test from "./components/page/Test";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route  path="/unban" element={<UnbanCard/>} />
         <Route  path="/download" element={<Download/>} />
         <Route  path="/rules" element={<Rules/>} />  
+        <Route  path="/test" element={<Test/>} />  
         <Route
         path="*"
         element={<Navigate to="/" replace />}

@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
+//Renders user status based on Auth0
 const HeaderStatus = () => {
   const { user, isAuthenticated } = useAuth0();
 
@@ -13,7 +14,7 @@ const HeaderStatus = () => {
       </div>
 
       <div className="user--info">
-        <h3>{user.name}</h3>
+        
 
       </div>
     </>

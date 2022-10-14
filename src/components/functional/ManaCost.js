@@ -1,5 +1,6 @@
 import DrawSymbol from "./DrawSymbol";
 
+//Renders symbols to represent mana cost
 const ManaCost = ({ mana_cost }) => {
   const reg = /[^{}]+/g;
 

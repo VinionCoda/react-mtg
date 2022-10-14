@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const WarningModal = ({ settings }) => {
-  const { title, text, toggle, data, cardlist, saveFunct, closeFunct } =
-    settings;
+//Renders Modals within application
+
+const WarningModal = ({ settings, show, closeFunct }) => {
+  const {title, text, data, callback } = settings;
 
   return (
-    <Modal show={toggle} onHide={closeFunct}>
+    <Modal show={show} onHide={closeFunct}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
@@ -30,10 +31,10 @@ const WarningModal = ({ settings }) => {
         <Button
           variant="primary"
           onClick={() => {
-            saveFunct(cardlist);
+            callback(data);
           }}
         >
-          Remove Cards
+         Confirm
         </Button>
       </Modal.Footer>
     </Modal>
@@ -139,7 +140,7 @@ const ShowModal = ({ settings, show, type, funct }) => {
     return <DialogModal settings={options} callback={funct} />;
   }
 
-  return <WarningModal settings={options} />;
+  return <WarningModal settings={options} show={toggle} closeFunct={funct} />;
 };
 
 export default ShowModal;

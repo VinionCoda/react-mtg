@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import { buildViewData } from "../functional/ViewContext";
 import "../../Page.css";
 
+
 const Home = () => {
   const [view, setView] = useState("");
   const [data, setData] = useState([]);
@@ -32,6 +33,7 @@ const Home = () => {
   };
 
   const viewUpdate = localStorage.getItem("Update");
+
 
   useEffect(() => {
     buildViewData().then((result) => {

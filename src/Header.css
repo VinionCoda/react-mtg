@@ -36,6 +36,9 @@
 .header--subtitles {
   text-shadow: 6px 5px 5px rgb(0, 0, 0);
 }
+.header__icon {
+  display: none;
+}
 
 a {
   color: white;

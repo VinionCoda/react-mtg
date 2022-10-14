@@ -1,5 +1,9 @@
 import { createContext } from "react";
 
+/* FUNCTIONS FOR THE CREATION OF VIEW DATASET. CONTEXT PASSES DATASET TO CHILDNODES */
+
+
+//Gathers MTG cards from MongoDB via Heroku API server
 const fetchCards = async () => {
   try {
     const data = await fetch("https://mtgmongodbserver.herokuapp.com/cards");
@@ -11,6 +15,7 @@ const fetchCards = async () => {
   }
 };
 
+//Gathers MTG Sets from MongoDB via Heroku API server
 const fetchSets = async () => {
   try {
     const data = await fetch("https://mtgmongodbserver.herokuapp.com/sets");
@@ -22,6 +27,8 @@ const fetchSets = async () => {
   }
 };
 
+
+//Sorts and builds Dataset for View
 export const buildViewData = async () => {
   const cardDB = await fetchCards();
   const setDB = await fetchSets();
@@ -30,10 +37,10 @@ export const buildViewData = async () => {
 
   const sort_cards =
     cardDB.length > 0
-      ? cardDB.sort((a, b) => a.card_name.localeCompare(b.card_name))
+      ? cardDB.sort((a, b) => a.card_name.localeCompare(b.card_name)? 1 : -1)
       : [];
   const sort_sets =
-  remEmptySets.length > 0 ? setDB.sort((a, b) => a.set_release > b.set_release) : [];
+  remEmptySets.length > 0 ? setDB.sort((a, b) => a.set_release > b.set_release? 1 : -1) : [];
 
   const rebuild = sort_sets.map((set) => {
     return {

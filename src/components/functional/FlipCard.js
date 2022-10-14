@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import "../../FlipCard.css";
 
+//Renders a MTG Flipcard (front and back)
 const FlipCard = ({ card }) => {
   const { card_name, card_image, card_status, card_back } = card;
 

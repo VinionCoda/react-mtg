@@ -5,6 +5,7 @@ import Table from "react-bootstrap/Table";
 import ViewContext from "./ViewContext";
 import "../../TableView.css";
 
+//Renders Dataset as table of cards sorted by set
 const ListTable = () => {
   const setlist = useContext(ViewContext);
   return (
