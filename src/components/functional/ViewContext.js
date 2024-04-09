@@ -6,7 +6,8 @@ import { createContext } from "react";
 //Gathers MTG cards from MongoDB via Heroku API server
 const fetchCards = async () => {
   try {
-    const data = await fetch("https://mtgmongodbserver.herokuapp.com/cards");
+    //const data = await fetch("https://mtgmongodbserver.herokuapp.com/cards");
+    const data = await fetch("https://club-api.onrender.com/cards");
     const res = await data.json();
     return res;
   } catch (error) {
@@ -18,7 +19,8 @@ const fetchCards = async () => {
 //Gathers MTG Sets from MongoDB via Heroku API server
 const fetchSets = async () => {
   try {
-    const data = await fetch("https://mtgmongodbserver.herokuapp.com/sets");
+   // const data = await fetch("https://mtgmongodbserver.herokuapp.com/sets");
+   const data = await fetch("https://club-api.onrender.com/sets");
     const res = await data.json();
     return res;
   } catch (error) {
