@@ -18,7 +18,10 @@ import "../../Page.css";
 const Home = () => {
   const [view, setView] = useState("");
   const [data, setData] = useState([]);
-  sessionStorage.setItem("Update",false);
+  const [update, setUpdate] = useState({ update: false });
+
+
+
 
   const toggleView = () => {
     switch (view) {
@@ -32,14 +35,18 @@ const Home = () => {
     }
   };
 
-  const viewUpdate = localStorage.getItem("Update");
+  // const viewUpdate = localStorage.getItem("Update");
 
 
   useEffect(() => {
-    buildViewData().then((result) => {
-      setData(result);
-    });
-  }, [viewUpdate]);
+    if (!update.update) {
+      buildViewData().then((result) => {
+        setData(result);
+        sessionStorage.setItem("Data", result);
+        (result.length >= 0) ? setUpdate({ update: true }) : setUpdate({ update: false });
+      });
+    } 
+  }, [update]);
 
   useEffect(() => {
     const setViewLook = () => {
@@ -62,7 +69,7 @@ const Home = () => {
     <>
       <Header />
       <div className="body__container">
-        {/* Side bar */}
+        {/* Left Side bar */}
         <div id="side_bar" className="side_bar">
           <Button variant="primary" onClick={toggleView}>
             <FontAwesomeIcon icon={faImage} /> {"  "}
@@ -81,8 +88,8 @@ const Home = () => {
           </ViewContext.Provider>
         </div>
 
-        {/* Side bar */}
-        <div id="side_bar" className="side_bar"></div>
+        {/* Right Side bar */}
+        <div id="right_side_bar" className=""></div>
       </div>
 
       <ReturnToTopButton />

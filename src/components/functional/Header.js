@@ -21,11 +21,11 @@ const HeaderNavi = ({ isAuthenticated }) => {
       <span className="menu_item">
         <Link to="/upload">Edit List</Link>
       </span>
-      <span className="menu_item">
+      <span className="menu_item" >
         <Link to="/unban">Unban Cards</Link>
       </span>
 
-      <span className="menu_item">
+      <span className="menu_item" style={{visiblity:"hidden"}}>
         <Link to="/download">Download List</Link>
       </span>
     </div>
@@ -37,7 +37,7 @@ const HeaderNavi = ({ isAuthenticated }) => {
       <span className="menu_item">
         <Link to="/rules">Group Rules</Link>
       </span>
-      <span className="menu_item">
+      <span className="menu_item" style={{visibility:"hidden"}}>
         <Link to="/download">Download List</Link>
       </span>
     </div>
@@ -69,11 +69,11 @@ const Header = () => {
 
       <br />
 
-      <h5 className="header--subtitles">
+{/*       <h5 className="header--subtitles">
         Banned Cards <span className="red_square"> &nbsp;&nbsp;&nbsp;</span>{" "}
         Limited Cards <span className="yellow_square">&nbsp;&nbsp;&nbsp; </span>
       </h5>
-
+ */}
       <HeaderUserWidget />
       <br />
 

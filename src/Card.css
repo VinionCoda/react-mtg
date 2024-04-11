@@ -1,6 +1,8 @@
 .cardtitle {
   text-align: center;
   padding-top: 18px;
+  color: white;
+  text-decoration: underline;
 }
 
 .card {
@@ -12,8 +14,8 @@
 }
 
 .banned {
-  border-radius: 25px;
-  border: solid 10px red;
+  border-radius: 12px;
+  /* border: solid 10px rgb(0, 0, 0); */
 }
 
 .limited {

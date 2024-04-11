@@ -21,8 +21,8 @@
 .side_bar {
   display: block !important;
   width: 20%;
-  background-color: black;
-  background-image: url("./assests/img/re.webp");
+  background-color: #252323;
+  /* background-image: url("./assests/img/re.webp"); */
   text-align: center;
   min-width: 160px;
   padding-right: 8px;
@@ -36,13 +36,38 @@
   text-align: center;
 }
 
-.jumplist__ul{
+.jump_scroll {
+  height: 250px;
+  overflow: auto;
+}
+
+#jump_to_set {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+
+.jumplist__ul {
   list-style-type: none;
 
   margin-top: 10px;
   padding: 0;
   text-align: left;
 }
+
+.jumplist__ul li{
+  padding: 10px;
+  border-bottom: 1px solid #ffffff;
+}
+
+#right_side_bar{
+  width: 5%;
+  padding-right: 8px;
+  padding-left: 8px;
+  display: block !important;
+  background-color: black;
+  background-image: url(http://localhost:3000/static/media/re.89f8648ec7e277d13b2e.webp);
+ }
 
 .side_bar h2,
 h3 {
@@ -66,6 +91,7 @@ h3 {
 
 .container {
   padding-top: 20px;
+  min-width: 820px;
 }
 
 .container__heading {
@@ -93,6 +119,7 @@ h3 {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 600;
   font-size: large;
+  padding-left: 30px;
 }
 
 .footer {
@@ -105,6 +132,7 @@ h3 {
   margin: 1rem;
   max-width: 400px;
 }
+
 .main__right {
   margin: 1rem;
   max-width: 400px;
@@ -125,18 +153,29 @@ h3 {
     width: 45%;
     float: left;
   }
+
   .main__right {
     width: 45%;
     float: left;
     min-height: 389px;
     padding-left: 10px;
   }
+
   .hr_line {
     display: none;
   }
+
   .list__banned {
     min-height: 289px;
   }
+
+
+}
+
+@media only screen and (max-width:900px) {
+  #right_side_bar{
+    display:none !important;  
+   }
 }
 
 @media only screen and (max-width: 610px) {
@@ -194,6 +233,7 @@ h3 {
   .card_type--mod {
     padding-left: 30px;
   }
+
   .text-start {
     padding-left: 10px;
   }
@@ -201,6 +241,7 @@ h3 {
   .list__banned {
     width: 100%;
   }
+
   .list-group-item:hover {
 
     color: white;

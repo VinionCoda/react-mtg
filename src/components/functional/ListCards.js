@@ -19,6 +19,7 @@ const ListCards = () => {
   return (
     <>
       <h3 className="container__heading ">List of Banned Cards</h3>
+      <hr></hr>
       {setlist.map((set) => (
         <Fragment key={set.set_id}>
           <div className="container--name" id={set.set_id}>
