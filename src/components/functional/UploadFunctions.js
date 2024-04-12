@@ -6,8 +6,9 @@ import SetIcon from "./SetIcon";
 
 //Fetch Card DB
 const fetchCards = async () => {
-  try {
-    const data = await fetch("https://mtgmongodbserver.herokuapp.com/cards");
+  try {//https://mtgmongodbserver.herokuapp.com/
+    //const data = await fetch("http://localhost:5000/cards");
+    const data = await fetch("https://club-api.onrender.com/cards");
     const res = await data.json();
     return res;
   } catch (error) {
@@ -18,7 +19,8 @@ const fetchCards = async () => {
 //Fetch Set DB
 const fetchSets = async () => {
   try {
-    const data = await fetch("https://mtgmongodbserver.herokuapp.com/sets");
+    //const data = await fetch("http://localhost:5000/sets");
+    const data = await fetch("https://club-api.onrender.com/sets");
     const res = await data.json();
     return res;
   } catch (error) {
@@ -29,8 +31,10 @@ const fetchSets = async () => {
 //Delete card from database
 export const removeMTGCard = async (card, callback) => {
   try {
+    //console.log(card);
     const token = await callback();
-    const url = "https://mtgmongodbserver.herokuapp.com/auth/removeCard";
+    const url = "https://club-api.onrender.com/auth/removeCard";
+    //const url = "http://localhost:5000/auth/removeCard";
     const requestOptions = {
       method: "POST",
       mode: "cors",
@@ -39,15 +43,15 @@ export const removeMTGCard = async (card, callback) => {
         "Content-Type": "application/json",
         authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(card),
+      body: JSON.stringify(card[0]),
     };
 
     const data = await fetch(url, requestOptions);
     const dataJson = await data.json();
-    console.log(dataJson);
+    //console.log(dataJson);
     return dataJson;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return { status: "failed" };
   }
 };
@@ -119,7 +123,7 @@ export const findLegacy = (collection) => {
 //Find duplicates in upload card list
 export const findDuplicates = async (collection) => {
   const cardDB = await fetchCards();
-  console.log(cardDB);
+  //console.log(cardDB);
   let arr = [];
   collection.data.forEach((card) => {
     const x = cardDB.findIndex((db_card) => {
@@ -184,7 +188,8 @@ export const setStatus = (cardlist) => {
 export const saveCollection = async (cardlist, callback) => {
   try {
     const token = await callback();
-    const url = "https://mtgmongodbserver.herokuapp.com/auth/addCollection";
+    const url = "https://club-api.onrender.com/auth/addCollection";
+    //const url = "http://localhost:5000/auth/addCollection";
     const requestOptions = {
       method: "POST",
       mode: "cors",
@@ -200,7 +205,7 @@ export const saveCollection = async (cardlist, callback) => {
     const dataJson = await data.json();
     return dataJson;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return { status: "failed" };
   }
 };
@@ -209,7 +214,8 @@ export const saveCollection = async (cardlist, callback) => {
 export const saveSets = async (setlist, callback) => {
   try {
     const token = await callback();
-    const url = "https://mtgmongodbserver.herokuapp.com/auth/addSetList";
+    const url = "https://club-api.onrender.com/auth/addSetList";
+    //const url = "http://localhost:5000/auth/addSetList";
     const requestOptions = {
       method: "POST",
       mode: "cors",
@@ -224,7 +230,7 @@ export const saveSets = async (setlist, callback) => {
     const dataJson = await data.json();
     return dataJson;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return { status: "failed" };
   }
 };
@@ -352,6 +358,7 @@ export const CardListRemove = ({ cardlist, callback }) => {
             <button
               className="btn btn-sm btn-outline-danger"
               onClick={() => {
+                //console.log(card.card_id);
                 callback(card);
               }}
             >

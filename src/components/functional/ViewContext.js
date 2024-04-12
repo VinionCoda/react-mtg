@@ -9,11 +9,11 @@ const fetchCards = async () => {
     //const data = await fetch("https://mtgmongodbserver.herokuapp.com/cards");
     const data = await fetch("https://club-api.onrender.com/cards");
 
-   // const data = await fetch("http://localhost:5000/cards");
+    //const data = await fetch("http://localhost:5000/cards");
     const res = await data.json();
     return res;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return [];
   }
 };
@@ -21,14 +21,14 @@ const fetchCards = async () => {
 //Gathers MTG Sets from MongoDB via API server
 const fetchSets = async () => {
   try {
-   // const data = await fetch("https://mtgmongodbserver.herokuapp.com/sets");
-   const data = await fetch("https://club-api.onrender.com/sets");
-   
-   //const data = await fetch("http://localhost:5000/sets");
+    // const data = await fetch("https://mtgmongodbserver.herokuapp.com/sets");
+    const data = await fetch("https://club-api.onrender.com/sets");
+
+    //const data = await fetch("http://localhost:5000/sets");
     const res = await data.json();
     return res;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return [];
   }
 };
@@ -44,7 +44,7 @@ const fetchSets = async () => {
     const res = await data.json();
     return res;
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     return [];
   }
 }; */
@@ -60,10 +60,10 @@ export const buildViewData = async () => {
 
   const sort_cards =
     cardDB.length > 0
-      ? cardDB.sort((a, b) => a.card_name.localeCompare(b.card_name)? 1 : -1)
+      ? cardDB.sort((a, b) => a.card_name.localeCompare(b.card_name) ? 1 : -1)
       : [];
   const sort_sets =
-  remEmptySets.length > 0 ? setDB.sort((a, b) => a.set_release > b.set_release? 1 : -1) : [];
+    remEmptySets.length > 0 ? setDB.sort((a, b) => a.set_release > b.set_release ? 1 : -1) : [];
 
   const rebuild = sort_sets.map((set) => {
     return {

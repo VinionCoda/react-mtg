@@ -66,7 +66,7 @@
   padding-left: 8px;
   display: block !important;
   background-color: black;
-  background-image: url(http://localhost:3000/static/media/re.89f8648ec7e277d13b2e.webp);
+  background-image: url("/public/img/re.webp");
  }
 
 .side_bar h2,
@@ -102,7 +102,7 @@ h3 {
 }
 
 .container--loading {
-  background-image: url("./assests/img/load.webp");
+  background-image: url("/public/img/load.webp");
   width: 200px;
   height: 200px;
   background-position: center;

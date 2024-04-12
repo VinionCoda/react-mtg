@@ -42,7 +42,7 @@ const FlipCard = ({ card }) => {
       <div className="flip-card-title">{card_name}</div>
       <div className="flip-icon" onClick={(e) => flip(e)}>
         
-        <img src="../img/flip_arrow.png" alt="flip arrow" />
+        <img src="/img/flip_arrow.png" alt="flip arrow" />
       </div>
     </div>
     </Fragment>

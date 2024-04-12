@@ -25,7 +25,7 @@ const UnbanCard = () => {
     data: [],
     toggle: false,
   });
-  
+
 
   const filterList = (text, arr) => {
     const temp_filter = arr.filter((card) =>
@@ -51,19 +51,19 @@ const UnbanCard = () => {
   };
 
   const remMtgCard = (card) => {
-    console.log("remMTG "+ card)
-  const res =  removeMTGCard(card, getAccessTokenSilently);
-  const settings = {
-    type: "",
-    title: "Cleaver MTG Banned List",
-    text: "The following card has been unbanned:",
-    data: [card],
-    toggle: true,
-    callback:clearModal,
-  }; 
-  setSettings(settings);
-  setType("alert");
-  setShow(true);
+    const res = removeMTGCard(card, getAccessTokenSilently);
+    console.log(res);
+    const settings = {
+      type: "",
+      title: "Cleaver MTG Banned List",
+      text: "The following card has been unbanned:",
+      data: [card[0]],
+      toggle: true,
+      callback: clearModal,
+    };
+    setSettings(settings);
+    setType("alert");
+    setShow(true);
   };
 
   const setModal = (card) => {
@@ -73,15 +73,28 @@ const UnbanCard = () => {
       text: "The following card will be unbanned:",
       data: [card],
       toggle: true,
-      callback:remMtgCard,
-    }; 
+      callback: remMtgCard,
+    };
     setSettings(settings);
     setType("");
     setShow(true);
   };
 
-  const clearModal= (card)=>{
-    setShow(false);  
+  const clearModal = (card) => {
+
+    const settings = {
+      type: "",
+      title: "",
+      text: "",
+      data: [card],
+      toggle: false,
+      callback: null,
+    };
+    setSettings(settings);
+    setType("alert");
+    setShow(false);
+    txtInput.current.value = "";
+    setCardlist([]);
   }
 
 
@@ -110,7 +123,7 @@ const UnbanCard = () => {
               <h3 className="pb-2"> Result Card List: </h3>
 
               {/* Result List */}
-              <CardListRemove cardlist={cardlist} callback ={setModal}/>
+              <CardListRemove cardlist={cardlist} callback={setModal} />
             </div>
           </div>{" "}
         </div>{" "}
