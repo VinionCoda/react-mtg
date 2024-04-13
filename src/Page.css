@@ -5,6 +5,12 @@
   margin: auto;
 }
 
+html { 
+  background-color: rgb(39, 38, 38);
+  margin: auto;
+  max-width: 1080px;
+}
+
 .body__side {
   min-width: 200px;
 }
@@ -16,6 +22,13 @@
   margin-top: 50px;
   margin-bottom: 100px;
   margin-left: 50px;
+}
+
+.search button{
+  float: right;
+margin-left: 10px;
+ margin-top: 10px; 
+ color: #ffffff;
 }
 
 .side_bar {
@@ -79,10 +92,10 @@ h3 {
   font-size: 0.8em;
   overflow-wrap: anywhere;
 }
-
+/* 
 .side_bar button {
   margin-top: 10px;
-}
+} */
 
 .side_selector {
   flex-wrap: nowrap;

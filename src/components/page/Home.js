@@ -3,7 +3,6 @@ import Footer from "../functional/Footer";
 
 import useViewSelector from "../hook/useViewSelector";
 import ViewContext from "../functional/ViewContext";
-import SideBarUserWidget from "../functional/SideBarUserWidget";
 import ReturnToTopButton from "../functional/ReturnToTopButton";
 import JumpToWidget from "../functional/JumpToWidget";
 
@@ -19,8 +18,6 @@ const Home = () => {
   const [view, setView] = useState("");
   const [data, setData] = useState([]);
   const [update, setUpdate] = useState({ update: false });
-
-
 
 
   const toggleView = () => {
@@ -45,7 +42,7 @@ const Home = () => {
         sessionStorage.setItem("Data", result);
         (result.length >= 0) ? setUpdate({ update: true }) : setUpdate({ update: false });
       });
-    } 
+    }
   }, [update]);
 
   useEffect(() => {
@@ -68,16 +65,19 @@ const Home = () => {
   return (
     <>
       <Header />
+{/* Search Bar */}
+
+      <div className="search">
+        <Button variant="outlined" onClick={toggleView}>
+          <FontAwesomeIcon icon={faImage} /> {"  "}
+          Toggle View
+        </Button>
+      </div>
+
       <div className="body__container">
+
         {/* Left Side bar */}
         <div id="side_bar" className="side_bar">
-          <Button variant="primary" onClick={toggleView}>
-            <FontAwesomeIcon icon={faImage} /> {"  "}
-            Toggle View
-          </Button>
-          <hr />
-          <SideBarUserWidget />
-          <hr />
           {view === "" ? <JumpToWidget setlist={data} /> : ""}
         </div>
 
@@ -89,12 +89,11 @@ const Home = () => {
         </div>
 
         {/* Right Side bar */}
-        <div id="right_side_bar" className=""></div>
+        {/*   <div id="right_side_bar" className=""></div> */}
       </div>
 
-      <ReturnToTopButton />
-
       <Footer />
+      <ReturnToTopButton />
     </>
   );
 };

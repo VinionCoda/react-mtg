@@ -1,12 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Image} from "react-bootstrap";
 
+import SideBarUserWidget from "./SideBarUserWidget";
 import ShowModal from "../functional/ShowModal";
 import HeaderUserWidget from "../functional/HeaderUserWidget";
+
 import "../../Header.css";
+
 
 const HeaderNavi = ({ isAuthenticated }) => {
   return isAuthenticated ? (
@@ -58,25 +62,28 @@ const Header = () => {
 
   return (
     <header className="header" id="main_top">
-      <span className="header__icon" onClick={toggleModal}>
-        <FontAwesomeIcon icon={faBars} size="2x" inverse />
-      </span>
-      <h1 id="title" className="header--title ">
-        Cleaver Road MTG Banned List
-      </h1>
-      <br />
-      <HeaderNavi isAuthenticated={isAuthenticated} />
 
-      <br />
+      <div className="navi">
 
-      {/*       <h5 className="header--subtitles">
-        Banned Cards <span className="red_square"> &nbsp;&nbsp;&nbsp;</span>{" "}
-        Limited Cards <span className="yellow_square">&nbsp;&nbsp;&nbsp; </span>
-      </h5>
- */}
-      <HeaderUserWidget />
-      <br />
+        <span className="header__icon" onClick={toggleModal}>
+          <FontAwesomeIcon icon={faBars} size="2x" inverse />
+        </span>
+        <h2 id="title" className="header--title ">
+          Cleaver Road MTG Banned List
+        </h2>
 
+        <div className="log_in"> <SideBarUserWidget /><HeaderUserWidget /></div>
+
+
+      </div>
+      <div className="banner">
+        <HeaderNavi isAuthenticated={isAuthenticated} />
+      </div>
+      <div className="spacer"></div>
+      <div className="image_wapper">
+        <Image src="/img/thunder4.jpg" fluid />
+      </div>
+  
       <ShowModal
         settings={{}}
         show={toggle}
