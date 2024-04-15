@@ -6,9 +6,9 @@ import SetIcon from "./SetIcon";
 
 //Fetch Card DB
 const fetchCards = async () => {
-  try {//https://mtgmongodbserver.herokuapp.com/
-    //const data = await fetch("http://localhost:5000/cards");
-    const data = await fetch("https://club-api.onrender.com/cards");
+  try {
+    const url = process.env.REACT_APP_API_SOURCE + "/cards";
+    const data = await fetch(url);
     const res = await data.json();
     return res;
   } catch (error) {
@@ -19,8 +19,8 @@ const fetchCards = async () => {
 //Fetch Set DB
 const fetchSets = async () => {
   try {
-    //const data = await fetch("http://localhost:5000/sets");
-    const data = await fetch("https://club-api.onrender.com/sets");
+    const url = process.env.REACT_APP_API_SOURCE + "/sets";
+    const data = await fetch(url);
     const res = await data.json();
     return res;
   } catch (error) {
@@ -33,9 +33,8 @@ export const removeMTGCard = async (card, callback) => {
   try {
     //console.log(card);
     const token = await callback();
-    const url = "https://club-api.onrender.com/auth/removeCard";
-    //const url = "http://localhost:5000/auth/removeCard";
-    const requestOptions = {
+    const url = process.env.REACT_APP_API_SOURCE + "/auth/removeCard";
+      const requestOptions = {
       method: "POST",
       mode: "cors",
       credentials: "same-origin",
@@ -188,9 +187,8 @@ export const setStatus = (cardlist) => {
 export const saveCollection = async (cardlist, callback) => {
   try {
     const token = await callback();
-    const url = "https://club-api.onrender.com/auth/addCollection";
-    //const url = "http://localhost:5000/auth/addCollection";
-    const requestOptions = {
+    const url = process.env.REACT_APP_API_SOURCE + "/auth/addCollection";
+      const requestOptions = {
       method: "POST",
       mode: "cors",
       credentials: "same-origin",
@@ -214,8 +212,7 @@ export const saveCollection = async (cardlist, callback) => {
 export const saveSets = async (setlist, callback) => {
   try {
     const token = await callback();
-    const url = "https://club-api.onrender.com/auth/addSetList";
-    //const url = "http://localhost:5000/auth/addSetList";
+    const url = process.env.REACT_APP_API_SOURCE + "/auth/addSetList";
     const requestOptions = {
       method: "POST",
       mode: "cors",

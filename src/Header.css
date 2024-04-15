@@ -20,13 +20,20 @@
 
 .user_widget .user_image {
   padding-right: 10px;
+  font-size: medium;
 }
+
+.user_widget h3 {
+  font-size: medium;
+}
+
 
 .user_widget .user_info {
   display: flex;
   height: 20px;
   padding-inline: 10px;
   font-size: 10pt;
+  margin-top: -2px;
 }
 
 .user_widget button {
@@ -42,6 +49,11 @@
   line-height: 10px;
 }
 
+.user_widget .btn-logout {
+  margin-left: -100px;
+  margin-top: -3px;
+}
+
 .banner {
   height: 3.5rem;
   background-color: rgb(63, 58, 58);
@@ -52,22 +64,11 @@
   position: relative;
   padding-top: 10px;
   padding-right: 20px;
-
 }
 
 .navi .h2 {
   font-size: 24px !important;
 }
-
-@media screen and (max-width: 755px) {
-
-  .header .banner,
-  .navi,
-  .image_wrapper {
-    min-width: 750px;
-  }
-}
-
 
 .search {
   width: 100%;
@@ -76,11 +77,9 @@
   background-color: rgb(24, 23, 23);
 }
 
-
 .header:hover {
   background-blend-mode: normal;
 }
-
 
 .header__text {
   margin: auto;
@@ -99,10 +98,6 @@
   padding-left: 10px;
 }
 
-/* .header--subtitles {
-  text-shadow: 6px 5px 5px rgb(0, 0, 0);
-} */
-
 .header__icon {
   display: none;
   float: left;
@@ -118,42 +113,16 @@ a {
   height: 100px;
 }
 
-/* .red_square {
-  background-color: red;
-  margin-left: 10px;
-  margin-right: 100px;
-  height: auto;
-  width: auto;
-}
-
-.yellow_square {
-  background-color: yellow;
-  margin-left: 10px;
-  height: auto;
-  width: auto;
-}
- */
-
 .menu {
-
   font-size: large;
   font-weight: bold;
   padding-top: 10px;
-  /* text-shadow: 6px 5px 5px rgb(0, 0, 0); */
 }
 
 .menu_item {
   width: 148px;
   text-align: center;
-
 }
-
-/* .menu_item:hover {
-  line-height: 15px;
-  padding: 5px;
-  border-radius: 5px;
-  background: rgba(0, 0, 0, 0.7);
-} */
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -184,37 +153,81 @@ body {
   background-color: #555;
 }
 
-@media only screen and (max-width: 610px) {
-  * {
+@media screen and (max-width: 755px) {
+  .header .banner,
+  .navi,
+  .image_wrapper {
+    min-width: 750px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #root{
+    overflow: clip !important;
+  }
+  
+  html {
     margin: 0;
     padding: 0;
+    max-width: 410px !important;
+    min-width: 410px !important;   
+  }
+
+  .navi {
+    min-width: 410px !important;
+  }
+
+  .banner {
+    display: none;
+  }
+
+  .image_wapper {
+    margin-top: 0 !important;
+  }
+
+  .search {
+    position: unset !important;
+    min-width: 410px !important;
+    max-width: 430px !important;
+  }
+
+  .search .jump_to {
+    position: unset;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .search button {
+    display: none;
+  }
+
+  #jump_to_set {
+    margin-top: 10px !important;
   }
 
   .menu {
     display: none;
   }
 
-  .header {
-    all: revert;
-    height: 120px;
-    width: 100%;
-    text-align: center;
-    font: size 3vh;
-    color: white;
-    position: fixed;
-    z-index: 9;
-    background-color: black;
-    background-image: url("./assests/img/SNC_Xander.webp");
-    background-size: cover;
-    background-position-x: center;
-    padding-top: 20px;
-    max-width: 610px;
-    min-height: 200px;
-    max-height: 400px;
+  .log_in {
+    display: none;
   }
 
-  #title {
-    padding-top: 20px;
+  .header--title {
+    position: unset !important;
+    font-size: x-large;
+    padding-left: 40px !important;
+  }
+
+  .mobile_list {
+    max-width: 388px;
+  }
+
+  .list__banned {
+    min-height: 50px;
+    width: 100%;
   }
 
   .header__text {
@@ -224,26 +237,20 @@ body {
 
   .header__icon {
     display: block;
-    float: left;
-    margin-left: 10px;
-    margin-top: 33px;
   }
 
   .header__icon:hover {
     cursor: pointer !important;
   }
 
-  .modal {
-    display: none;
-    z-index: 555;
-    padding-top: 150px;
+  .modal {    
+    z-index: 555;   
     left: 0;
     top: 0;
-    width: 100%;
+    width: 99%;
     height: 100%;
     overflow: auto;
-    color: black;
-    background-color: rgb(0, 0, 0);
+    color: black;    
     background-color: rgba(0, 0, 0, 0.4);
     text-align: center;
   }
@@ -292,10 +299,6 @@ body {
 
   .header--subtitles {
     display: none !important;
-  }
-
-  .header--title {
-    font-size: xx-large;
   }
 
   .modal-header {

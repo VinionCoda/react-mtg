@@ -6,10 +6,8 @@ import { createContext } from "react";
 //Gathers MTG cards from MongoDB via API server
 const fetchCards = async () => {
   try {
-    //const data = await fetch("https://mtgmongodbserver.herokuapp.com/cards");
-    const data = await fetch("https://club-api.onrender.com/cards");
-
-    //const data = await fetch("http://localhost:5000/cards");
+    const url = process.env.REACT_APP_API_SOURCE + "/cards";
+    const data = await fetch(url);
     const res = await data.json();
     return res;
   } catch (error) {
@@ -21,10 +19,7 @@ const fetchCards = async () => {
 //Gathers MTG Sets from MongoDB via API server
 const fetchSets = async () => {
   try {
-    // const data = await fetch("https://mtgmongodbserver.herokuapp.com/sets");
-    const data = await fetch("https://club-api.onrender.com/sets");
-
-    //const data = await fetch("http://localhost:5000/sets");
+    const data = await fetch(process.env.REACT_APP_API_SOURCE + "/sets");
     const res = await data.json();
     return res;
   } catch (error) {
@@ -32,23 +27,6 @@ const fetchSets = async () => {
     return [];
   }
 };
-
-
-//Gathers MTG Timestamp from MongoDB via API server
-/* const fetchTimestamp = async () => {
-  try {
-   // const data = await fetch("https://mtgmongodbserver.herokuapp.com/sets");
-   //const data = await fetch("https://club-api.onrender.com/timestamp");
-
-   const data = await fetch("http://localhost:5000/timestamp");   
-    const res = await data.json();
-    return res;
-  } catch (error) {
-    //console.log(error);
-    return [];
-  }
-}; */
-
 
 
 //Sorts and builds Dataset for View

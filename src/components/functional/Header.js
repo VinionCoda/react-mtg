@@ -74,12 +74,11 @@ const Header = () => {
 
         <div className="log_in"> <SideBarUserWidget /><HeaderUserWidget /></div>
 
-
       </div>
       <div className="banner">
         <HeaderNavi isAuthenticated={isAuthenticated} />
       </div>
-      <div className="spacer"></div>
+     
       <div className="image_wapper">
         <Image src="/img/thunder4.jpg" fluid />
       </div>

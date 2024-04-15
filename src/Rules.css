@@ -1,9 +1,3 @@
-.side_bar {
-  display: flex;
-  width: 20%;
-  background-color: black;
-  background-image: url("./assests/img/re.webp");
-}
 
 .container__rules {
   background-color: black;

@@ -25,6 +25,7 @@ const ListTable = () => {
           {setlist.map((set, key) => {
             return (
               <>
+               <hr id={set.set_id} />
                 {set.banned.map((card, key) => (
                   <tr>
                     <td>{card.card_name}</td>
@@ -38,8 +39,7 @@ const ListTable = () => {
                     </td>
                     <td>{card.card_status}</td>
                   </tr>
-                ))}
-
+                ))}               
                 {set.limited.map((card, key) => (
                   <tr>
                     <td>{card.card_name}</td>
@@ -54,6 +54,7 @@ const ListTable = () => {
                     <td>{card.card_status}</td>
                   </tr>
                 ))}
+
               </>
             );
           })}

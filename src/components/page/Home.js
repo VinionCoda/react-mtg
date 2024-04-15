@@ -13,61 +13,55 @@ import { useState, useEffect } from "react";
 import { buildViewData } from "../functional/ViewContext";
 import "../../Page.css";
 
-
-const Home = () => {
-  const [view, setView] = useState("");
-  const [data, setData] = useState([]);
-  const [update, setUpdate] = useState({ update: false });
-
-
-  const toggleView = () => {
-    switch (view) {
-      case "":
-        setView("ViewTable");
-        break;
-
-      default:
-        setView("");
-        break;
-    }
-  };
-
-  // const viewUpdate = localStorage.getItem("Update");
-
-
-  useEffect(() => {
-    if (!update.update) {
-      buildViewData().then((result) => {
-        setData(result);
-        sessionStorage.setItem("Data", result);
-        (result.length >= 0) ? setUpdate({ update: true }) : setUpdate({ update: false });
-      });
-    }
-  }, [update]);
-
-  useEffect(() => {
-    const setViewLook = () => {
-      if (window.innerWidth < 610) {
-        setView("ViewList");
-      } else if (view === "ViewList") {
-        setView("");
-      }
+  const Home = () => {
+    const [view, setView] = useState("");
+    const [data, setData] = useState([]);
+  
+    const toggleView = () => {
+      setView(prevView => prevView === "" ? "ViewTable" : "");
     };
-
-    window.addEventListener("resize", setViewLook);
-    setViewLook();
-
-    return () => window.removeEventListener("resize", setViewLook);
-  });
-
-
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const cachedData = JSON.parse(sessionStorage.getItem("Data"));
+          if (cachedData && cachedData.length > 0) {
+            setData(cachedData);
+          } else {
+            const result = await buildViewData();
+            setData(result);
+            sessionStorage.setItem("Data", JSON.stringify(result));
+          }
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+  
+    useEffect(() => {
+      const setViewLook = () => {
+        if (window.innerWidth < 610) {
+          setView("ViewList");
+        } else if (view === "ViewList") {
+          setView("");
+        }
+      };
+  
+      window.addEventListener("resize", setViewLook);
+      setViewLook();
+  
+      return () => window.removeEventListener("resize", setViewLook);
+    }, [view]);
 
   return (
     <>
       <Header />
-{/* Search Bar */}
 
+      {/* Search Bar */}
       <div className="search">
+        <JumpToWidget setlist={data} />
         <Button variant="outlined" onClick={toggleView}>
           <FontAwesomeIcon icon={faImage} /> {"  "}
           Toggle View
@@ -77,19 +71,20 @@ const Home = () => {
       <div className="body__container">
 
         {/* Left Side bar */}
-        <div id="side_bar" className="side_bar">
-          {view === "" ? <JumpToWidget setlist={data} /> : ""}
+        <div id="left_side_bar" className="side_bar">
+
         </div>
 
         {/* Main Container */}
-        <div className="container">
+        <div className="container">         
           <ViewContext.Provider value={data}>
             {useViewSelector(view)}
           </ViewContext.Provider>
         </div>
 
         {/* Right Side bar */}
-        {/*   <div id="right_side_bar" className=""></div> */}
+         <div id="right_side_bar" className="side_bar"></div> 
+
       </div>
 
       <Footer />

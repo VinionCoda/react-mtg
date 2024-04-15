@@ -5,7 +5,7 @@
   margin: auto;
 }
 
-html { 
+html {
   background-color: rgb(39, 38, 38);
   margin: auto;
   max-width: 1080px;
@@ -24,78 +24,45 @@ html {
   margin-left: 50px;
 }
 
-.search button{
+.search button {
   float: right;
-margin-left: 10px;
- margin-top: 10px; 
- color: #ffffff;
+  margin-left: 10px;
+  margin-top: 10px;
+  color: #ffffff;
 }
 
 .side_bar {
-  display: block !important;
-  width: 20%;
-  background-color: #252323;
-  /* background-image: url("./assests/img/re.webp"); */
-  text-align: center;
-  min-width: 160px;
-  padding-right: 8px;
-  padding-left: 8px;
+  width: 15%;
+  background-color: black;
+  background-image: url("/public/img/re.webp");
 }
 
-.side_bar__jumplist {
-  background-color: #252323;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
+.jump_to {
+  margin-left: 10px;
+  margin-top: 10px;
+  z-index: 5;
+  position: absolute;
 }
 
 .jump_scroll {
-  height: 250px;
+  height: 150px;
   overflow: auto;
 }
 
 #jump_to_set {
-  width: 150px;
-  margin-bottom: 20px;
+  width: 180px;
 }
-
 
 .jumplist__ul {
   list-style-type: none;
-
-  margin-top: 10px;
   padding: 0;
-  text-align: left;
 }
 
-.jumplist__ul li{
-  padding: 10px;
+.jumplist__ul li {
+  padding: 4px;
   border-bottom: 1px solid #ffffff;
+  background-color: rgb(24, 23, 23);
 }
-
-#right_side_bar{
-  width: 5%;
-  padding-right: 8px;
-  padding-left: 8px;
-  display: block !important;
-  background-color: black;
-  background-image: url("/public/img/re.webp");
- }
-
-.side_bar h2,
-h3 {
-  font-size: 1em;
-  overflow-wrap: anywhere;
-}
-
-.side_bar p {
-  font-size: 0.8em;
-  overflow-wrap: anywhere;
-}
-/* 
-.side_bar button {
-  margin-top: 10px;
-} */
 
 .side_selector {
   flex-wrap: nowrap;
@@ -128,6 +95,11 @@ h3 {
   margin-left: 40%;
 }
 
+table hr {
+  margin: 5px;
+}
+
+
 .setname--card {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 600;
@@ -157,12 +129,10 @@ h3 {
   max-width: 450px;
 }
 
-.list__banned {
-  min-height: 50px;
-}
+
 
 @media only screen and (min-width: 910px) {
-  .main__left {
+  /*  .main__left {
     width: 45%;
     float: left;
   }
@@ -180,16 +150,49 @@ h3 {
 
   .list__banned {
     min-height: 289px;
+  } */
+}
+
+/* @media screen and (max-width: 840px) {
+
+  html,
+  #root,
+  body {
+    max-width: 830px !important;
   }
 
+  .side_bar {
+    display: none !important;
+  }
+
+  .container {
+    max-width: 830px !important;
+    padding: 0 !important;
+    min-width: 830px !important;
+  }
 
 }
 
-@media only screen and (max-width:900px) {
-  #right_side_bar{
-    display:none !important;  
-   }
+@media screen and (max-width: 811px) {
+
+  html,
+  #root,
+  body {
+    max-width: 800px !important;
+  }
+
+  .side_bar {
+    display: none !important;
+  }
+
+  .container {
+    max-width: 800px !important;
+    padding: 0 !important;
+    min-width: 800px !important;
+  }
+
 }
+
 
 @media only screen and (max-width: 610px) {
   * {
@@ -234,10 +237,6 @@ h3 {
     min-height: 200px;
   }
 
-  .side_bar {
-    display: none;
-  }
-
   .container {
     margin-top: 250px;
     padding-top: 0px;
@@ -256,8 +255,7 @@ h3 {
   }
 
   .list-group-item:hover {
-
     color: white;
-  }
+  } 
 
-}
+}*/

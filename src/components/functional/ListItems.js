@@ -12,7 +12,7 @@ const ListItems = () => {
 
   return (
     <>
-      <Accordion  className="w-100">
+      <Accordion  className="w-100 mobile_list">
         {setlist.map((set, key) => {
           return (
             <Accordion.Item eventKey={`${ key }`}>        
@@ -78,7 +78,7 @@ const ListItems = () => {
                           className="form-check-label"
                           htmlFor="defaultCheck1"
                         >
-                          Stutus:
+                          Status:
                         </label>{" "}
                         &nbsp;
                         <span>{card.card_status}</span>

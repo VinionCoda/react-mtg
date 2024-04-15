@@ -12,10 +12,7 @@ const HeaderStatus = () => {
       <div className="user--svg">
       <img src={user.picture} alt={user.name} />
       </div>
-
-      <div className="user--info">
-        
-
+      <div className="user--info">      
       </div>
     </>
   ) : (
